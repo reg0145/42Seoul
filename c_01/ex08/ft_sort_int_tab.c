@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 17:20:24 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/09/14 21:19:08 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/09/15 00:27:18 by colin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_qsort(int *arr, int start, int end)
 		{
 			j--;
 		}
-		if(i >= j)
+		if (i >= j)
 			break;
 		ft_swap(&arr[i], &arr[j]);
 	}
