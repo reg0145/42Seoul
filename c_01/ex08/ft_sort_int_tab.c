@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 17:20:24 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/09/15 00:48:08 by colin            ###   ########.fr       */
+/*   Updated: 2021/09/16 10:39:44 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,34 @@ void	ft_swap(int *a, int *b)
 	*b = temp;
 }
 
-void	ft_qsort(int *arr, int start, int end)
+void	ft_qsort(int *start, int *end)
 {
-	int	pivot;
-	int	i;
-	int	j;
+	int	*pivot;
+	int	*left;
+	int	*right;
 
 	if (start >= end)
 		return ;
 	pivot = start;
-	i = pivot + 1;
-	j = end;
-	while (i <= j)
+	left = start + 1;
+	right = end;
+	while (left <= right)
 	{
-		while (i <= end && arr[i] <= arr[pivot])
-		{
-			i++;
-		}
-		while (j > start && arr[j] >= arr[pivot])
-		{
-			j--;
-		}
-		if (i >= j)
-			break;
-		ft_swap(&arr[i], &arr[j]);
+		while (left <= end && *left <= *pivot)
+			left++;
+		while (right > start && *right >= *pivot)
+			right--;
+		if (left >= right)
+			ft_swap(&right, &pivot);
+		else
+			ft_swap(&left, &right);
 	}
-	ft_swap(&arr[pivot], &arr[j]);
-	ft_qsort(arr, start, j - 1);
-	ft_qsort(arr, j + 1, end);
+	ft_swap(&pivot, &right);
+	ft_qsort(start, right - 1);
+	ft_qsort(right + 1, end);
 }
 
 void	ft_sort_int_tab(int *tab, int size)
 {
-	ft_qsort(tab, 0, size - 1);
+	ft_qsort(tab, size);
 }
