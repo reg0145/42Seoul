@@ -6,22 +6,22 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 23:25:12 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/09/15 00:45:14 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/09/17 21:07:46 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strlowcase(char *str)
 {
-	int	index;
+	int	idx;
 
-	index = 0;
-	while (str[index] != '\0')
+	idx = 0;
+	while (str[idx] != '\0')
 	{
-		if ((str[index] >= 'A' && str[index] <= 'Z'))
+		if ((str[idx] >= 'A' && str[idx] <= 'Z'))
 		{
-			str[index] += 'a' - 'A';
+			str[idx] += 'a' - 'A';
 		}
-		index++;
+		idx++;
 	}
 	return (str);
 }

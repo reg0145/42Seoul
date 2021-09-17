@@ -6,47 +6,61 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 23:26:46 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/09/15 00:43:42 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/09/17 22:01:45 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_char_is_lowercase(char *c)
+int	ft_char_is_alphanumeric(char c)
 {
-	if (*c >= 'A' && *c <= 'Z')
-		*c += ('a' - 'A');
-	return (c);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	{
+		return (1);
+	}
+	else if (c >= '0' && c <= '9')
+	{
+		return (1);
+	}
+	return (0);
 }
 
-char	*ft_char_is_uppercase(char *c)
+void	ft_charlowercase(char *c)
 {
-	if (*c >= 'a' && *c <= 'z')
-		*c -= ('a' - 'A');
-	return (c);
+	if (c != 0)
+	{
+		if ((*c >= 'A' && *c <= 'Z'))
+			*c += 'a' - 'A';
+	}
+}
+
+void	ft_charupcase(char *c)
+{
+	if (c != 0)
+	{
+		if ((*c >= 'a' && *c <= 'z'))
+			*c -= 'a' - 'A';
+	}
 }
 
 char	*ft_strcapitalize(char *str)
 {
 	int	is_new_word;
-	int	i;
+	int	index;
 
-	i = 0;
+	index = 0;
 	is_new_word = 1;
-	while (str[i] != '\0')
+	while (str[index] != '\0')
 	{
-		if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))
+		if (ft_char_is_alphanumeric(str[index]))
 		{
 			if (is_new_word)
-			{
-				ft_char_is_uppercase(&str[i]);
-				printf("%c!", str[i]);
-				is_new_word = 0;
-			}
+				ft_charupcase(&str[index]);
 			else
-				ft_char_is_lowercase(&str[i]);
+				ft_charlowercase(&str[index]);
+			is_new_word = 0;
 		}
-		else if ((str[i] < '0' || str[i] > '9'))
+		else
 			is_new_word = 1;
-		i++;
+		index++;
 	}
 	return (str);
 }

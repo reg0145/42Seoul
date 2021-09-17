@@ -6,19 +6,22 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 22:52:58 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/09/15 00:46:01 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/09/17 21:14:30 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_str_is_numeric(char *str)
 {
-	while (*str != '\0')
+	int	idx;
+
+	idx = 0;
+	while (str[idx] != '\0')
 	{
-		if ((*str < '0' || *str > '9'))
+		if ((str[idx] < '0' || str[idx] > '9'))
 		{
 			return (0);
 		}
-		str++;
+		idx++;
 	}
 	return (1);
 }

@@ -6,18 +6,18 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 17:02:13 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/09/16 10:27:32 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/09/17 20:46:25 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strlen(char *str)
 {
-	char	*cstr;
+	int	idx;
 
-	cstr = str;
-	while (str != '\0')
+	idx = 0;
+	while (str[idx] != '\0')
 	{
-		str++;
+		idx++;
 	}
-	return (str - cstr);
+	return (idx);
 }

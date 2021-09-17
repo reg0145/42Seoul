@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 17:20:24 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/09/16 10:39:44 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/09/17 20:54:10 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,15 @@ void	ft_qsort(int *start, int *end)
 		while (right > start && *right >= *pivot)
 			right--;
 		if (left >= right)
-			ft_swap(&right, &pivot);
+			ft_swap(right, pivot);
 		else
-			ft_swap(&left, &right);
+			ft_swap(left, right);
 	}
-	ft_swap(&pivot, &right);
 	ft_qsort(start, right - 1);
 	ft_qsort(right + 1, end);
 }
 
 void	ft_sort_int_tab(int *tab, int size)
 {
-	ft_qsort(tab, size);
+	ft_qsort(tab, tab + size);
 }

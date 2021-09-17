@@ -6,19 +6,22 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 22:38:12 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/09/14 22:51:23 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/09/17 21:14:19 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
+int	ft_str_is_alpha(char *s)
 {
-	while (*str != '\0')
+	int	idx;
+
+	idx = 0;
+	while (s[idx] != '\0')
 	{
-		if ((*str < 'a' || *str > 'z') && (*str < 'A' || *str > 'Z'))
+		if ((s[idx] < 'a' || s[idx] > 'z') && (s[idx] < 'A' || s[idx] > 'Z'))
 		{
 			return (0);
 		}
-		str++;
+		idx++;
 	}
 	return (1);
 }

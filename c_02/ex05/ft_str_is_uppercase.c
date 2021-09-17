@@ -6,19 +6,22 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 23:10:08 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/09/14 23:11:44 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/09/17 21:13:32 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_str_is_uppercase(char *str)
 {
-	while (*str != '\0')
+	int	idx;
+
+	idx = 0;
+	while (str[idx] != '\0')
 	{
-		if ((*str < 'A' || *str > 'Z'))
+		if ((str[idx] < 'A' || str[idx] > 'Z'))
 		{
 			return (0);
 		}
-		str++;
+		idx++;
 	}
 	return (1);
 }
