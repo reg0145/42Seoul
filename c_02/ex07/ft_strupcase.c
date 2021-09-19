@@ -12,16 +12,16 @@
 
 char	*ft_strupcase(char *str)
 {
-	int	index;
+	int	idx;
 
-	index = 0;
-	while (str[index] != '\0')
+	idx = 0;
+	while (str[idx] != '\0')
 	{
-		if ((str[index] >= 'a' && str[index] <= 'z'))
+		if ((str[idx] >= 'a' && str[idx] <= 'z'))
 		{
-			str[index] -= 'a' - 'A';
+			str[idx] -= 'a' - 'A';
 		}
-		index++;
+		idx++;
 	}
 	return (str);
 }
