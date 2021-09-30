@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 16:59:45 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/09/17 20:46:31 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/09/18 18:07:14 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void	ft_putstr(char *str)
 	while (str[idx] != '\0')
 	{
 		write(1, &str[idx], 1);
+		idx++;
 	}
-	idx++;
 }

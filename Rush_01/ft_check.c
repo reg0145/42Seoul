@@ -1,8 +1,9 @@
 #include <stdlib.h>
-int	ft_cal_up(int *i, int n, int visible[][4]);
-int	ft_cal_down(int *i, int n, int visible[][4]);
-int	ft_cal_left(int *i, int n, int visible[][4]);
-int	ft_cal_right(int *i, int n, int visible[][4]);
+
+int	ft_cal_up(int *i, int n, int vib[][4]);
+int	ft_cal_down(int *i, int n, int vib[][4]);
+int	ft_cal_left(int *i, int n, int vib[][4]);
+int	ft_cal_right(int *i, int n, int vib[][4]);
 
 int	*get_arr(int box[][4], int x, int y, int type)
 {
@@ -26,25 +27,25 @@ int	*get_arr(int box[][4], int x, int y, int type)
 	return (arr);
 }
 
-int	ft_check(int n, int box[][4], int x, int y, int visible[][4])
+int	ft_check(int n, int box[][4], int xy[2], int vib[][4])
 {
 	int	*arr;
 
-	arr = get_arr(box, x, y, 0);
-	arr[x] = n + 1;
-	if (ft_cal_up(arr, y, visible))
+	arr = get_arr(box, xy[0], xy[1], 0);
+	arr[xy[0]] = n + 1;
+	if (ft_cal_up(arr, xy[1], vib))
 	{
-		arr = get_arr(box, x, y, 1);
-		arr[x] = n + 1;
-		if (ft_cal_down(arr, y, visible))
+		arr = get_arr(box, xy[0], xy[1], 1);
+		arr[xy[0]] = n + 1;
+		if (ft_cal_down(arr, xy[1], vib))
 		{
-			arr = get_arr(box, x, y, 2);
-			arr[y] = n + 1;
-			if (ft_cal_left(arr, x, visible))
+			arr = get_arr(box, xy[0], xy[1], 2);
+			arr[xy[1]] = n + 1;
+			if (ft_cal_left(arr, xy[0], vib))
 			{
-				arr = get_arr(box, x, y, 3);
-				arr[y] = n + 1;
-				if (ft_cal_right(arr, x, visible))
+				arr = get_arr(box, xy[0], xy[1], 3);
+				arr[xy[1]] = n + 1;
+				if (ft_cal_right(arr, xy[0], vib))
 					return (1);
 			}
 		}

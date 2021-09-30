@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/11 00:09:36 by colin             #+#    #+#             */
-/*   Updated: 2021/09/13 23:57:17 by donghyuk         ###   ########.fr       */
+/*   Created: 2021/09/11 00:09:36 by donghyuk          #+#    #+#             */
+/*   Updated: 2021/09/15 15:24:07 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	putchar(char c)
 
 void	ft_print_nums(int num_a, int num_b)
 {
-	putchar(num_a / 10) + '0');
-	putchar(num_a % 10) + '0');
+	putchar((num_a / 10) + '0');
+	putchar((num_a % 10) + '0');
 	putchar(' ');
-	putchar(num_b / 10) + '0');
-	putchar(num_b % 10) + '0');
+	putchar((num_b / 10) + '0');
+	putchar((num_b % 10) + '0');
 }
 
 void	ft_print_comb2(void)
