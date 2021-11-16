@@ -6,14 +6,13 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:08:05 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/16 16:38:49 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/16 23:50:42 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isascii(int c)
 {
-	if (c >= '0' && c <= '9')
-		return (4);
-	else if(c >= 'a' && )
-		return (0);
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }
