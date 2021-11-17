@@ -6,20 +6,21 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:08:05 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/16 17:59:27 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/17 11:07:51 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char	*strrchr(const char *s, int c)
 {
-	char	*c_s;
+	size_t	len;
 
-	c_s = 0;
-	while (*s != 0)
+	len = ft_strlen(s);
+	while (len-- >= 0 && s[len] != 0)
 	{
-		if (*s == (char)c)
-			c_s = (char *)s;
-		s++;
+		if (s[len] == (char)c)
+			return ((char *)&s[len]);
 	}
-	return (c_s);
+	return (0);
 }

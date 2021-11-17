@@ -6,13 +6,13 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:08:05 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/16 17:17:28 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/17 11:26:26 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	while (*s != 0)
+	while (*s != '\0')
 	{
 		if (*s == (char)c)
 			return ((char *)s);
