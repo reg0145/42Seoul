@@ -6,9 +6,11 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:08:05 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/17 16:29:50 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/19 14:48:36 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_memcmp(const void *buf1, const void *buf2, size_t count)
 {

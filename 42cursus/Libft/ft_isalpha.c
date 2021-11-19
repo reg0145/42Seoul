@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:08:05 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/16 16:40:06 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/19 11:55:46 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	ft_isalpha(int c)
 		return (1);
 	else if (c >= 'a' && c <= 'z')
 		return (2);
-	else if (c >= '0' && c <= '9')
-		return (4);
 	else
 		return (0);
 }

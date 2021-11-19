@@ -6,13 +6,18 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:08:05 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/16 23:50:42 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/19 11:55:24 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+int	ft_isalnum(int c)
 {
-	if (c >= 0 && c <= 127)
+	if (c >= 'A' && c <= 'Z')
 		return (1);
-	return (0);
+	else if (c >= 'a' && c <= 'z')
+		return (2);
+	else if (c >= '0' && c <= '9')
+		return (4);
+	else
+		return (0);
 }

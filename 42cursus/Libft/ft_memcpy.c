@@ -6,9 +6,11 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:08:05 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/17 16:30:31 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/19 14:48:45 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t count)
 {
