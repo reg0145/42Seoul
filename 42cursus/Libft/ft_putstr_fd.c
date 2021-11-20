@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 20:24:58 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/19 20:25:05 by donghyuk         ###   ########.fr       */
+/*   Created: 2021/11/19 20:25:16 by donghyuk          #+#    #+#             */
+/*   Updated: 2021/11/20 13:03:12 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-Prototype void ft_putendl_fd(char *s, int fd)
-{
+#include "libft.h"
 
+void	ft_putstr_fd(char *s, int fd)
+{
+	while (*s)
+		ft_putchar_fd(*s++, fd);
 }

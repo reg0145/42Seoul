@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 20:26:35 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/19 20:26:38 by donghyuk         ###   ########.fr       */
+/*   Created: 2021/11/19 20:24:43 by donghyuk          #+#    #+#             */
+/*   Updated: 2021/11/20 16:25:55 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strjoin(char const *s1, char const *s2)
-{
+#include "libft.h"
 
+void	ft_putnbr_fd(int n, int fd)
+{
+	ft_putstr_fd(ft_itoa(n), fd);
 }
