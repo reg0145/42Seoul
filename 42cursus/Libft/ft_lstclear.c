@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 20:26:24 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/22 11:19:43 by donghyuk         ###   ########.fr       */
+/*   Created: 2021/11/22 15:39:15 by donghyuk          #+#    #+#             */
+/*   Updated: 2021/11/22 16:00:52 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	size_t	i;
-	size_t	len;
-	char	*result;
+	t_list	*temp;
 
-	i = 0;
-	len = ft_strlen(s1);
-	while (ft_strchr(set, s1[i]))
-		i++;
-	while (len > i && ft_strchr(set, *(s1 + len - 1)))
-		len--;
-	result = (char *)ft_calloc(len - i + 1, sizeof(char));
-	ft_strlcpy(result, (s1 + i), len - i + 1);
-	return (result);
+	if (!lst)
+		return ;
+	while (*lst)
+	{
+		temp = *lst;
+		free((*lst) -> content);
+		(*lst) -> next = NULL;
+		free((*lst));
+		*lst = temp;
+	}
+	lst = NULL;
 }

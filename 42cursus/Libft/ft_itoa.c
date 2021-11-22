@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:26:06 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/20 16:23:44 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/22 11:41:51 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	ft_str_swap(char *str)
 static void	ft_itoa_sub(unsigned int n, char *p)
 {
 	if (n > 9)
-		ft_itoa_sub(n / 10, p++);
+		ft_itoa_sub(n / 10, p + 1);
 	*p = "0123456789"[n % 10];
 }
 
@@ -45,11 +45,10 @@ char	*ft_itoa(int n)
 	char			*p;
 	char			*p_temp;
 
-	p = (char *)malloc(sizeof(char) * 12);
+	p = (char *)ft_calloc(12, sizeof(char));
 	if (!p)
 		return (NULL);
 	p_temp = p;
-	ft_memset(p, 0, 12);
 	num = (unsigned int)n;
 	if (n < 0)
 	{
