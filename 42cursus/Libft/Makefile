@@ -6,7 +6,7 @@
 #    By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 17:44:07 by donghyuk          #+#    #+#              #
-#    Updated: 2021/11/25 17:44:08 by donghyuk         ###   ########.fr        #
+#    Updated: 2021/11/25 18:11:43 by donghyuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ $(NAME) : $(OBJS)
 	ar -rcs $@ $^
 
 clean :
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BOBJS)
 
 fclean : clean
 	rm -f $(NAME)
