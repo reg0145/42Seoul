@@ -1,0 +1,2 @@
+gcc main
+./a.out
