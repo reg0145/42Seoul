@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 14:46:10 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/22 15:32:27 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/23 14:14:08 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*result;
 
-	if (content)
-	{
-		result = (t_list *)malloc(sizeof(t_list));
-		result -> content = content;
-		result -> next = 0;
-	}
-	else
-		return (0);
+	result = (t_list *)malloc(sizeof(t_list));
+	if (!result)
+		return (NULL);
+	result->content = content;
+	result->next = NULL;
+	return (result);
 }

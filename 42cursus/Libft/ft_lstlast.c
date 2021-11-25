@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 14:47:01 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/22 15:32:17 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/23 14:23:41 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	if (!lst)
-		return (0);
-	while (!(lst -> next))
-		lst = lst -> next;
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
 	return (lst);
 }

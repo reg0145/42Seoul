@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:26:06 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/22 11:41:51 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/25 11:40:49 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,26 @@ static void	ft_str_swap(char *str)
 	}
 }
 
+static unsigned int	ft_numlen(int n)
+{
+	unsigned int	num;
+	unsigned int	result;
+
+	num = n;
+	result = 1;
+	if (n < 0)
+	{
+		num = -num;
+		result++;
+	}
+	while (num > 9)
+	{
+		num = num / 10;
+		result++;
+	}
+	return (result);
+}
+
 static void	ft_itoa_sub(unsigned int n, char *p)
 {
 	if (n > 9)
@@ -45,7 +65,7 @@ char	*ft_itoa(int n)
 	char			*p;
 	char			*p_temp;
 
-	p = (char *)ft_calloc(12, sizeof(char));
+	p = (char *)ft_calloc(ft_numlen(n) + 1, sizeof(char));
 	if (!p)
 		return (NULL);
 	p_temp = p;

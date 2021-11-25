@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 14:46:25 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/22 15:30:02 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/23 14:17:19 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,8 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list *temp;
-
-	if (!lst || !new)
+	if (lst == NULL || new == NULL)
 		return ;
-	if (*lst)
-	{
-		temp = *lst;
-		*lst = new;
-		(*lst) -> next = temp;
-	}
+	new->next = *lst;
+	*lst = new;
 }

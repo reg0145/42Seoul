@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:26:35 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/20 16:30:28 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/25 11:16:14 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*p;
 	char	*p_temp;
 
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
 	p = (char *)malloc(sizeof(char) * (s1_len + s2_len) + 1);
