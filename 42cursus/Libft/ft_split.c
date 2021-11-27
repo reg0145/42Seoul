@@ -6,13 +6,13 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:26:16 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/25 13:37:14 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/27 21:14:22 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_getcnt_word(const char *s, char ch)
+static size_t	ft_getcnt_str(const char *s, char ch)
 {
 	size_t	cnt;
 
@@ -36,15 +36,16 @@ static void	ft_free_all(char **list)
 	unsigned int	i;
 
 	i = 0;
-	while (list[i])
+	while (list[i] != NULL)
 	{
 		free(list[i]);
 		list[i] = NULL;
 		i++;
 	}
+	free(list);
 }
 
-static void	ft_split_sub(char **result, char const *s, char c)
+static void	*ft_split_sub(char **result, char const *s, char c)
 {
 	char	*start;
 	size_t	i;
@@ -59,24 +60,30 @@ static void	ft_split_sub(char **result, char const *s, char c)
 				s++;
 			result[i] = (char *)ft_calloc((s - start) + 1, sizeof(char));
 			if (result[i] == NULL)
+			{
 				ft_free_all(result);
+				return (0);
+			}
 			ft_strlcpy(result[i++], start, (s - start) + 1);
 		}
 		if (*s != '\0')
 			s++;
 	}
 	result[i] = 0;
+	return (result);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
+	size_t	cnt;
 
 	if (s == NULL)
 		 return (NULL);
-	result = (char **)ft_calloc(ft_getcnt_word(s, c) + 1, sizeof(char *));
+	cnt = ft_getcnt_str(s, c);
+	result = (char **)ft_calloc(cnt + 1, sizeof(char *));
 	if (result == NULL)
 		return (NULL);
-	ft_split_sub(result, s, c);
+	result = ft_split_sub(result, s, c);
 	return (result);
 }

@@ -6,7 +6,7 @@
 #    By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 17:44:07 by donghyuk          #+#    #+#              #
-#    Updated: 2021/11/25 18:11:43 by donghyuk         ###   ########.fr        #
+#    Updated: 2021/11/27 15:11:46 by donghyuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,11 +63,11 @@ NAME = libft.a
 
 all : $(NAME)
 
-%.o : %.c
-	$(CC) $(CFLAG) -c -I libft.h -o $@ $<
-
 $(NAME) : $(OBJS)
 	ar -rcs $@ $^
+
+%.o : %.c
+	$(CC) $(CFLAG) -c -I libft.h -o $@ $<
 
 clean :
 	rm -f $(OBJS) $(BOBJS)
@@ -75,8 +75,8 @@ clean :
 fclean : clean
 	rm -f $(NAME)
 
-bonus : $(BOBJS)
-	ar -rcs $(NAME) $(BOBJS)
+bonus : $(OBJS) $(BOBJS)
+	ar -rcs $(OBJS) $(BOBJS)
 
 re : fclean all
 .PHONY: bonus clean fclean re all
