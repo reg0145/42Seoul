@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:25:37 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/27 17:36:23 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/28 10:08:01 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t	i;
-	size_t	s_len;
+	unsigned int	i;
+	unsigned int	s_len;
 
 	if (s == NULL)
 		return ;

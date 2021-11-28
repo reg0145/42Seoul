@@ -6,7 +6,7 @@
 #    By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 17:44:07 by donghyuk          #+#    #+#              #
-#    Updated: 2021/11/27 15:11:46 by donghyuk         ###   ########.fr        #
+#    Updated: 2021/11/28 09:43:13 by donghyuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,8 +75,8 @@ clean :
 fclean : clean
 	rm -f $(NAME)
 
-bonus : $(OBJS) $(BOBJS)
-	ar -rcs $(OBJS) $(BOBJS)
+bonus : $(NAME) $(BOBJS)
+	ar -rcs $(NAME) $(BOBJS)
 
 re : fclean all
 .PHONY: bonus clean fclean re all
