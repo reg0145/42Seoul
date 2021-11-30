@@ -6,12 +6,13 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:26:06 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/25 11:40:49 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/12/01 00:42:43 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
 static void	ft_str_swap(char *str)
 {
 	int		size;
@@ -30,53 +31,46 @@ static void	ft_str_swap(char *str)
 		idx++;
 		size--;
 	}
-}
+}*/
 
 static unsigned int	ft_numlen(int n)
 {
-	unsigned int	num;
-	unsigned int	result;
+	int	len;
 
-	num = n;
-	result = 1;
-	if (n < 0)
+	len = 0;
+	if (n <= 0)
+		len++;
+	while (n)
 	{
-		num = -num;
-		result++;
+		len++;
+		n /= 10;
 	}
-	while (num > 9)
-	{
-		num = num / 10;
-		result++;
-	}
-	return (result);
-}
-
-static void	ft_itoa_sub(unsigned int n, char *p)
-{
-	if (n > 9)
-		ft_itoa_sub(n / 10, p + 1);
-	*p = "0123456789"[n % 10];
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	unsigned int	num;
 	char			*p;
-	char			*p_temp;
+	int				len;
+	unsigned int	num;
+	int				i;
 
-	p = (char *)ft_calloc(ft_numlen(n) + 1, sizeof(char));
-	if (!p)
+	len = ft_numlen(n);
+	p = (char *)ft_calloc(len + 1, sizeof(char));
+	if (p == NULL)
 		return (NULL);
-	p_temp = p;
-	num = (unsigned int)n;
+	num = n;
+	i = 0;
 	if (n < 0)
 	{
+		p[0] = '-';
 		num = -num;
-		p_temp[0] = '-';
-		p_temp++;
+		i = 1;
 	}
-	ft_itoa_sub(num, p_temp);
-	ft_str_swap(p_temp);
+	while (len-- > i)
+	{
+		p[len] = "0123456789"[num % 10];
+		num /= 10;
+	}
 	return (p);
 }

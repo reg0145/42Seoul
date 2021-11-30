@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:08:05 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/19 11:43:16 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/11/30 22:27:50 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*p;
+	char	*p;
 
-	p = (unsigned char *)s;
+	p = (char *)s;
 	while (n--)
 		*p++ = 0;
 }
