@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:25:16 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/25 11:17:08 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/12/02 01:24:04 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (s == NULL)
+	if (s == '\0')
 		return ;
 	while (*s)
 		ft_putchar_fd(*s++, fd);

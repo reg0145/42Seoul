@@ -6,32 +6,11 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:26:06 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/12/01 00:42:43 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/12/02 01:21:27 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-static void	ft_str_swap(char *str)
-{
-	int		size;
-	int		idx;
-	char	temp;
-
-	size = 0;
-	while (str[size] != '\0')
-		size++;
-	idx = 0;
-	while (idx < size)
-	{
-		temp = str[size - 1];
-		str[size - 1] = str[idx];
-		str[idx] = temp;
-		idx++;
-		size--;
-	}
-}*/
 
 static unsigned int	ft_numlen(int n)
 {

@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:26:16 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/28 16:31:10 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/12/02 01:23:43 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	*ft_split_sub(char **result, char const *s, char c)
 			}
 			ft_strlcpy(result[i++], start, (s - start) + 1);
 		}
-		if (*s != '\0')
+		else
 			s++;
 	}
 	result[i] = 0;
