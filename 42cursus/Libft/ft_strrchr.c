@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:08:05 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/11/25 14:51:37 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/12/02 01:56:48 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strrchr(const char *s, int c)
 	while (len)
 	{
 		len--;
-		if ((unsigned char)s[len] == (unsigned char)c)
+		if ((char)s[len] == (char)c)
 			return ((char *)s + len);
 	}
 	return (0);
