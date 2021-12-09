@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 09:57:37 by donghyuk          #+#    #+#             */
-/*   Updated: 2021/12/07 01:07:54 by donghyuk         ###   ########.fr       */
+/*   Updated: 2021/12/08 16:11:25 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,82 +18,115 @@
 
 #define HASH_SIZE 100
 
-static t_list	*get_lst_node(t_list **head, int fd)
+static t_list	*get_node_list(t_list **list, int fd)
 {
-	t_list	*lst;
+	t_list	*node;
+	t_list	*temp;
 
-	lst = *head;
-	while (lst)
+	node = *list;
+	while (node)
 	{
-		if (lst->fd == fd)
-			return (lst);
-		lst->next;
+		if (node->fd == fd)
+			return (node);
+		temp = node;
+		node = node->next;
 	}
-	if (lst == NULL)
+	if (node == NULL)
 	{
-		lst = (t_list *)malloc(sizeof(t_list));
-		if (lst == NULL)
-		{
-			//freeAll();
+		node = (t_list *)ft_calloc(1, sizeof(t_list));
+		if (node == NULL)
 			return (NULL);
-		}
-		ft_lstadd_back(head, lst);
+		if (*list == NULL)
+			*list = node;
+		else
+			temp->next = node;
+		node->fd = fd;
 	}
-	return (lst);
+	return (node);
 }
 
-static t_list	**get_lst_plist(t_list **table)
+static t_list	*get_node_table(t_list **table[], int fd)
 {
+	int	idx;
+
+	idx = fd % HASH_SIZE;
+	if (table[idx] == NULL)
+	{
+		table[idx] = (t_list **)ft_calloc(1, sizeof(t_list *));
+		if (table[idx] == NULL)
+			return (NULL);
+	}
+	return (get_node_list(table[idx], fd));
+}
+
+static int	free_all_table(t_list **table[])
+{
+	int	i;
+
 	if (table == NULL)
+		return ;
+	i = 0;
+	while (i < HASH_SIZE)
 	{
-		table = (t_list **)malloc(sizeof(t_list *));
-		if (table == NULL)
+		if (table[i] != NULL)
 		{
-			//freeAll();
-			return (NULL);
+			if ((*table[i])->rest != NULL)
+				free((*table[i])->rest);
+			free(table[i]);
+			table[i] = NULL;
 		}
-	}
-	return (table);
-}
-
-static char	*get_output_read(t_list *node)
-{
-	char	buff[BUFFER_SIZE + 1];
-	char	*out_str;
-	int		size;
-
-	size = read(node->fd, buff, BUFFER_SIZE);
-	while (size)
-	{
-		out_str = ft_strchr(buff, "\n\0");
-		if (out_str != NULL)
-		{
-			if (node->rest != NULL)
-			{
-				out_str =
-			}
-			return (out_str);
-		}
-		size = read(node->fd, buff, BUFFER_SIZE);
+		i++;
 	}
 	return (NULL);
+}
+
+static int	read_fd(t_list *node)
+{
+	char	buff[BUFFER_SIZE];
+	char	*temp;
+	int		size;
+	int		idx;
+
+	size = read(node->fd, buff, BUFFER_SIZE);
+	while (size > 0)
+	{
+		temp = ft_strjoin(node->rest, buff, size);
+		if (temp == NULL)
+			return (-1);
+		free(node->rest);
+		node->rest = temp;
+		idx = ft_strchr(temp);
+		if (idx)
+			return (idx);
+		size = read(node->fd, buff, BUFFER_SIZE);
+	}
+	return (size);
 }
 
 char	*get_next_line(int	fd)
 {
 	static t_list	**table[HASH_SIZE];
-	t_list			**plist;
 	t_list			*node;
-	char			*out_str;
+	int				idx;
+	char			*output;
 
-	plist = get_plist_table(table[fd % HASH_SIZE]);
-	if (plist == NULL)
-		return (NULL);
-	node = get_node_plist(plist, fd);
+	node = get_node_table(table, fd);
 	if (node == NULL)
-		return (NULL);
-	out_str = find_newline(node->rest);
-	if (out_str == NULL)
-		out_str = get_output_read(node);
+		return (free_all_table(table));
+	idx = ft_strchr(node->rest);
+	if (idx == 0)
+		idx = read_fd(node);
+	if (idx == -1)
+		return (free_all_table(table));
+	if (idx == 0)
+	{
+		output = ft_strjoin(NULL, node->rest, ft_strlen(node->rest));
+		free_all_table(table);
+		return (output);
+	}
+	if ()
+	{
+
+	}
 	return (out_str);
 }
