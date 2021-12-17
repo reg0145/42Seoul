@@ -1,0 +1,35 @@
+printf("%d\n", data);
+	//int data = printf("1234%+  d jjh%*d", 100 ,2147483648,123);
+
+	// data =  0일 때,
+	//data = printf("\n#22 %2147483647d", 1);  // 0플래그와 있을 시
+
+	data = printf("");
+	printf("%d", data);
+
+	// flag -
+	printf("\n#0 %-d", 1); // - 좌측 정렬
+	printf("\n#1-1 %00000007d", 110);
+	printf("\n#1-2 %0000000-7d", 1);  // -플래그일 때 좌측정렬임으로 0플래그를 무시한다.
+	// flag +- , -+ > 값이 양수일 때 + 출력
+	printf("\n#10 %-+d", 1);
+
+	// flag ' '
+	printf("\n#11 % d", 1);  // +플래그가 없으면 한칸 띄우고 출력
+	printf("\n#12 % +d", 1); // +플래그가 있으면 그대로 출력
+	printf("\n#13 % d", -1); // 음수일 경우 음수 포함해 그대로 출력
+
+	// width
+	printf("\n#20 %10d", 1);  // 10칸 우측정렬
+	printf("\n#21 %-00000010d", 1);  // 0플래그와 있을 시
+	//data = printf("\n#22 %2147483600d", 1);  // 0플래그와 있을 시
+	printf("%d", data);
+	//data = printf("\n#22 %2147483647d", 1);  // 0플래그와 있을 시
+
+	// format > NULL일 때, segmentation
+	//data = printf(NULL, -1);
+	//printf("%d", data);
+	//printf("%d", data);
+
+
+"/Users/colin/Documents/ft_printf/ft_printf.c",
