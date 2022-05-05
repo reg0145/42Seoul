@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:30:54 by donghyuk          #+#    #+#             */
-/*   Updated: 2022/05/05 22:14:18 by donghyuk         ###   ########.fr       */
+/*   Updated: 2022/05/05 17:05:40 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "client.h"
+#include "client_bonus.h"
 
 int	g_signal;
 
@@ -66,7 +66,7 @@ void	ft_send_message_size(int pid, char *str)
 	{
 		if (kill(pid, SIGUSR1 + (1 & (size >> bit))))
 			ft_error("signal_send_fail");
-		usleep(100);
+		usleep(300);
 	}
 }
 
@@ -92,25 +92,15 @@ void	sigusr1_handler(int signo, siginfo_t *siginfo, void *unused)
 	}
 }
 
-void	sigusr2_handler(int signo, siginfo_t *siginfo, void *unused)
-{
-	(void)signo;
-	(void)siginfo;
-	(void)unused;
-	write(1,"die",3);
-	exit(1);
-}
-
 int	main(int argc, char *argv[])
 {
 	int		pid;
 
 	pid = ft_check_param(argc, argv);
 	set_sigaction(SIGUSR1, sigusr1_handler);
-	set_sigaction(SIGUSR2, sigusr2_handler);
 	if (kill(pid, SIGUSR1))
 		ft_error("signal_send_fail");
-	while (g_signal != STANDBY)
+	while (g_signal != CONNECTED)
 		usleep(100);
 	ft_send_message_size(pid, argv[2]);
 	while (g_signal != RECV_MSG_SIZE)

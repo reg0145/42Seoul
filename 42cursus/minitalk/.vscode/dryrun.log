@@ -1,6 +1,7 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/donghyuk/Documents/42Seoul/42cursus/minitalk'
-make: Nothing to be done for `all'.
+gcc -Wall -Wextra -Werror -o server server.c server_util.c common_util.c
  
+gcc -Wall -Wextra -Werror -o client client.c common_util.c
 make: Leaving directory `/Users/donghyuk/Documents/42Seoul/42cursus/minitalk'
  

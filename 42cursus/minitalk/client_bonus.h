@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.h                                           :+:      :+:    :+:   */
+/*   client_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:33:26 by donghyuk          #+#    #+#             */
-/*   Updated: 2022/05/05 17:14:54 by donghyuk         ###   ########.fr       */
+/*   Updated: 2022/05/05 17:14:44 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLIENT_H
-# define CLIENT_H
+#ifndef CLIENT_BONUS_H
+# define CLIENT_BONUS_H
 
 # include <signal.h>
 # include <stdlib.h>

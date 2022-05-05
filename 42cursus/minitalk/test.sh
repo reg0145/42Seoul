@@ -1,5 +1,5 @@
 #! /bin/bash
-for var in {1..200000}
+for var in {1..10}
 do
-  ./test_pid &
+	./client $1 $var & 
 done

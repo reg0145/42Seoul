@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:22:50 by donghyuk          #+#    #+#             */
-/*   Updated: 2022/05/05 22:03:41 by donghyuk         ###   ########.fr       */
+/*   Updated: 2022/05/05 17:04:03 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "server_bonus.h"
 
 t_nlist	g_clients;
 
@@ -76,8 +76,8 @@ void	ft_recv(t_nlist *clients)
 				ft_error("signal_send_fail");
 			break ;
 		}
-		if (!sleep(5))
-			kill(clients->front->pid, SIGUSR2);
+		else
+			usleep(100);
 	}
 }
 

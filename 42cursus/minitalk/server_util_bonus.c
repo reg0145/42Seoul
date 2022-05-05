@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server_util.c                                      :+:      :+:    :+:   */
+/*   server_util_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:24:46 by donghyuk          #+#    #+#             */
-/*   Updated: 2022/05/05 17:04:27 by donghyuk         ###   ########.fr       */
+/*   Updated: 2022/05/05 17:02:21 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "server_bonus.h"
 
 void	add_client(t_nlist *list, int pid)
 {

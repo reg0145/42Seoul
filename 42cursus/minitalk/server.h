@@ -6,12 +6,13 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:33:41 by donghyuk          #+#    #+#             */
-/*   Updated: 2022/05/05 14:52:37 by donghyuk         ###   ########.fr       */
+/*   Updated: 2022/05/05 17:15:03 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERVER_H
 # define SERVER_H
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <signal.h>
