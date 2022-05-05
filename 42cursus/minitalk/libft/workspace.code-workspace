@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../ex_ft_printf"
+		},
+		{
+			"path": "../../test"
+		}
+	],
+    "settings": {
+        "files.associations": {
+            "__locale": "c",
+            "__string": "c",
+            "string": "c",
+            "string_view": "c",
+            "stdarg.h": "c",
+            "complex": "c",
+            "libft.h": "c"
+        }
+    }
+}
