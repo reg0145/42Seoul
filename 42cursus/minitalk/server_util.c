@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server_util.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/05 14:24:46 by donghyuk          #+#    #+#             */
+/*   Updated: 2022/05/05 14:52:36 by donghyuk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "server.h"
 
 void	add_client(t_nlist *list, int pid)
 {
-	t_client *tmp;
+	t_client	*tmp;
 
 	tmp = (t_client *)malloc(sizeof(t_client));
 	if (tmp == NULL)
@@ -49,7 +61,7 @@ void	ft_print_message(t_nlist *clients)
 			write(1, "\n", 1);
 			kill(clients->front->pid, SIGUSR1);
 			remove_client(clients);
-			break;
+			break ;
 		}
 		else
 			usleep(100);

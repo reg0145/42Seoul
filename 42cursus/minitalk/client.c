@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 02:30:54 by donghyuk          #+#    #+#             */
-/*   Updated: 2022/05/04 16:25:35 by donghyuk         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:52:34 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,11 @@ void	ft_send_message_size(int pid, char *str)
 	}
 }
 
-void	sigusr1_handler(int signo, siginfo_t *signinfo, void *unused)
+void	sigusr1_handler(int signo, siginfo_t *siginfo, void *unused)
 {
+	(void)signo;
+	(void)siginfo;
+	(void)unused;
 	if (g_signal == STANDBY)
 	{
 		write(1, "connected..\n", 13);
@@ -76,7 +79,7 @@ void	sigusr1_handler(int signo, siginfo_t *signinfo, void *unused)
 	}
 	else if (g_signal == CONNECTED)
 	{
-		write(1, "server received the message size..\n", 29);
+		write(1, "server received the message size..\n", 36);
 		g_signal = RECV_MSG_SIZE;
 	}
 	else if (g_signal == RECV_MSG_SIZE)
@@ -86,7 +89,7 @@ void	sigusr1_handler(int signo, siginfo_t *signinfo, void *unused)
 	}
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	int		pid;
 

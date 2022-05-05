@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util.c                                             :+:      :+:    :+:   */
+/*   common_util.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 20:26:26 by donghyuk          #+#    #+#             */
-/*   Updated: 2022/05/04 16:52:46 by donghyuk         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:52:35 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*ft_itoa(int n)
 	return (p);
 }
 
-void	set_sigaction(int sig, void (*f)(int signo, siginfo_t *signinfo, void *unused))
+void	set_sigaction(int sig, void (*f)(int s, siginfo_t *sinfo, void *unuse))
 {
 	struct sigaction	act;
 

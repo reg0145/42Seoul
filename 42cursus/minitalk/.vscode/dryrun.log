@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/donghyuk/Documents/42Seoul/42cursus/minitalk'
+make: Nothing to be done for `all'.
+ 
+make: Leaving directory `/Users/donghyuk/Documents/42Seoul/42cursus/minitalk'
+ 

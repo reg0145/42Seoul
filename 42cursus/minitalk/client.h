@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/05 14:33:26 by donghyuk          #+#    #+#             */
+/*   Updated: 2022/05/05 14:52:34 by donghyuk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CLIENT_H
 # define CLIENT_H
 
@@ -11,6 +23,6 @@
 size_t	ft_strlen(const char *s);
 void	ft_error(char	*msg);
 int		ft_atoi(const char *s);
-void	set_sigaction(int sig, void (*f)(int signo, siginfo_t *signinfo, void *unused));
+void	set_sigaction(int sig, void (*f)(int s, siginfo_t *sinfo, void *unuse));
 
 #endif
