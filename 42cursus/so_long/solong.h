@@ -6,6 +6,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include "minilibx_opengl/mlx.h"
 
 typedef struct s_map {
 	char	*val;
@@ -23,6 +24,7 @@ typedef enum e_map_object {
 	enemy = 'X'
 }	t_map_object;
 
+void	*mlx_init();
 int		ft_len(char *str);
 int		ft_stncmp(const char *s1, const char *s2, int n);
 void	*ft_memcpy(void *dest, const void *src, int count);

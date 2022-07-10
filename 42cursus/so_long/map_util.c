@@ -1,5 +1,6 @@
 
-int	ft_get_col(char *str){
+int	ft_get_col(char *str)
+{
 	int	col;
 
 	col = 0;
@@ -8,7 +9,8 @@ int	ft_get_col(char *str){
 	return (col);
 }
 
-int	ft_get_row(char *str){
+int	ft_get_row(char *str)
+{
 	int	row;
 
 	row = 0;
