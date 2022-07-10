@@ -1,5 +1,5 @@
-make: Entering directory `/Users/colin/Documents/Subject/so_long'
-make: Leaving directory `/Users/colin/Documents/Subject/so_long'
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/colin/Documents/Subject/Subject/42cursus/so_long'
+cc -Wall -Wextra -Werror -o solong solong.c util.c
+make: Leaving directory `/Users/colin/Documents/Subject/Subject/42cursus/so_long'
  
-make: *** No targets specified and no makefile found.  Stop.
-
