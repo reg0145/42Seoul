@@ -1,4 +1,10 @@
-#include "solong.h"
+#include "util.h"
+
+void	ft_error(char *message)
+{
+	printf("%s\n", message);
+	exit(EXIT_FAILURE);
+}
 
 size_t	ft_strlen(const char *str)
 {

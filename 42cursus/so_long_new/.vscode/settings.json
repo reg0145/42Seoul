@@ -16,6 +16,14 @@
 		"iterator": "c",
 		"utility": "c",
 		"fcntl.h": "c",
-		"solong.h": "c"
+		"solong.h": "c",
+		"__node_handle": "c",
+		"check.h": "c",
+		"game.h": "c",
+		"event.h": "c",
+		"map.h": "c",
+		"stdlib.h": "c",
+		"object.h": "c",
+		"util.h": "c"
 	}
 }
