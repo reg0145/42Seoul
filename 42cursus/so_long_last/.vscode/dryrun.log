@@ -1,5 +1,19 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/colin/Documents/Subject/Subject/42cursus/so_long_last'
-make: Nothing to be done for `all'.
+cc -Wall -Wextra -Werror -c -o main.o main.c
+cc -Wall -Wextra -Werror -c -o util.o util.c
+cc -Wall -Wextra -Werror -c -o event.o event.c
+cc -Wall -Wextra -Werror -c -o check_map.o check_map.c
+cc -Wall -Wextra -Werror -c -o check_object.o check_object.c
+cc -Wall -Wextra -Werror -c -o draw.o draw.c
+cc -Wall -Wextra -Werror -c -o ft_split.o ft_split.c
+cc -Wall -Wextra -Werror -c -o ft_strjoin.o ft_strjoin.c
+cc -Wall -Wextra -Werror -c -o game.o game.c
+cc -Wall -Wextra -Werror -c -o image.o image.c
+cc -Wall -Wextra -Werror -c -o map.o map.c
+cc -Wall -Wextra -Werror -c -o object.o object.c
+ 
+make -C mlx
+cc -Wall -Wextra -Werror -framework OpenGL -framework AppKit -L./mlx -lmlx -o so_long main.o util.o event.o check_map.o check_object.o draw.o ft_split.o ft_strjoin.o game.o image.o map.o object.o
 make: Leaving directory `/Users/colin/Documents/Subject/Subject/42cursus/so_long_last'
  

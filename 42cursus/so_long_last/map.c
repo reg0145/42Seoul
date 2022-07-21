@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 02:55:44 by donghyuk          #+#    #+#             */
-/*   Updated: 2022/07/18 03:28:38 by donghyuk         ###   ########.fr       */
+/*   Updated: 2022/07/21 13:10:15 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	ft_parse_map(t_map *map, int fd)
 	}
 	if (ft_create_map(map, str_map))
 		return (ERROR);
+	free(buf);
 	return (OK);
 }
 

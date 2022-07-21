@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 02:55:17 by donghyuk          #+#    #+#             */
-/*   Updated: 2022/07/18 03:28:59 by donghyuk         ###   ########.fr       */
+/*   Updated: 2022/07/18 11:32:19 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	ft_check_map_rect(t_map *map)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	while (i++ < map->row)
-		if (ft_strlen(map->data[i++]) != map->col)
+		if (ft_strlen(map->data[i]) != map->col)
 			return (ERROR);
 	return (OK);
 }

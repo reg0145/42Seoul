@@ -6,7 +6,7 @@
 /*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 02:55:31 by donghyuk          #+#    #+#             */
-/*   Updated: 2022/07/18 03:36:15 by donghyuk         ###   ########.fr       */
+/*   Updated: 2022/07/18 11:31:10 by donghyuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ int	ft_check_game_objects(t_objects *objs, t_map *map)
 	{
 		col = -1;
 		while (++col < (int)map->col)
-			ft_check_game_object(objs, map->data[row][col], row, col);
+			if (ft_check_game_object(objs, map->data[row][col], row, col))
+				return (ERROR);
 	}
 	if (objs->collec_num == 0 || objs->player.x == 0 || objs-> escape.x == 0)
 		return (ERROR);
