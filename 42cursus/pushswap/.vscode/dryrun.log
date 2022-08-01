@@ -1,0 +1,10 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/colin/Documents/Subject/Subject/42cursus/pushswap'
+cc -Wall -Wextra -Werror -I./Libft -c -o main.o main.c
+cc -Wall -Wextra -Werror -I./Libft -c -o error.o error.c
+cc -Wall -Wextra -Werror -I./Libft -c -o parse.o parse.c
+cc -Wall -Wextra -Werror -I./Libft -c -o stack.o stack.c
+make -C libft
+cc -Wall -Wextra -Werror -L./Libft -lft -o push_swap main.o error.o parse.o stack.o
+make: Leaving directory `/Users/colin/Documents/Subject/Subject/42cursus/pushswap'
+ 
