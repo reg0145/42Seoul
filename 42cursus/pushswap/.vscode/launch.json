@@ -14,7 +14,7 @@
 		// launch 하는 대상 프로그램
 		"program": "${fileDirname}/${fileBasenameNoExtension}",
 		// 실행하는 프로그램에 대해 인자가 필요한 경우 아래에 추가
-		"args": ["4", " 2 3 ", "1"],
+		"args": ["284", "11", "-17"],
 		// debug가 시작후 main 시작 부분에서 멈추게 하는지에 대한 여부
 		"stopAtEntry": false,
 		// 작업 경로

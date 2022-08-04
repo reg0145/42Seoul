@@ -1,12 +1,11 @@
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # define OK 0
 # define FAIL 1
 
 # include "libft.h"
-# include "lis.h"
-# include "error.h"
+# include "error_bonus.h"
 
 typedef struct s_node
 {
@@ -38,9 +37,7 @@ typedef struct s_data
 }	t_data;
 
 void	ft_init(t_data **data);
-void	ft_add_stack(t_stack *s, int data);
 void	ft_parse(int ac, char *av[], t_stack *a);
-void	ft_greedy_algorithm(t_data *data, t_lis *lis);
-t_lis	*ft_lis(int *arr, int len);
+void	ft_add_stack(t_stack *s, int v);
 
 #endif

@@ -1,10 +1,18 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/colin/Documents/Subject/Subject/42cursus/pushswap'
-cc -Wall -Wextra -Werror -I./Libft -c -o main.o main.c
+make: Entering directory `/Users/colin/Backup/Subject/Subject/42cursus/pushswap'
+cc -Wall -Wextra -Werror -I./Libft -c -o push_swap.o push_swap.c
 cc -Wall -Wextra -Werror -I./Libft -c -o error.o error.c
 cc -Wall -Wextra -Werror -I./Libft -c -o parse.o parse.c
-cc -Wall -Wextra -Werror -I./Libft -c -o stack.o stack.c
+cc -Wall -Wextra -Werror -I./Libft -c -o algorithm.o algorithm.c
+cc -Wall -Wextra -Werror -I./Libft -c -o algorithm_sub.o algorithm_sub.c
+cc -Wall -Wextra -Werror -I./Libft -c -o algorithm_util.o algorithm_util.c
+cc -Wall -Wextra -Werror -I./Libft -c -o algorithm_ext.o algorithm_ext.c
+cc -Wall -Wextra -Werror -I./Libft -c -o lis.o lis.c
+cc -Wall -Wextra -Werror -I./Libft -c -o lis_util.o lis_util.c
+cc -Wall -Wextra -Werror -I./Libft -c -o util.o util.c
+cc -Wall -Wextra -Werror -I./Libft -c -o command.o command.c
+cc -Wall -Wextra -Werror -I./Libft -c -o command_ext.o command_ext.c
 make -C libft
-cc -Wall -Wextra -Werror -L./Libft -lft -o push_swap main.o error.o parse.o stack.o
-make: Leaving directory `/Users/colin/Documents/Subject/Subject/42cursus/pushswap'
+cc -Wall -Wextra -Werror -L./Libft -lft -o push_swap push_swap.o error.o parse.o algorithm.o algorithm_sub.o algorithm_util.o algorithm_ext.o lis.o lis_util.o util.o command.o command_ext.o
+make: Leaving directory `/Users/colin/Backup/Subject/Subject/42cursus/pushswap'
  

@@ -10,7 +10,7 @@
 				"-lft",
 				"-I./Libft"
 				"-g",
-                "*.c",
+                "*_bonus.c",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],

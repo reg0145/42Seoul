@@ -1,5 +1,16 @@
 {
 	"files.associations": {
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"__node_handle": "c",
+		"stdio.h": "c",
+		"__locale": "c",
+		"unistd.h": "c",
+		"bit": "c",
+		"command.h": "c",
+		"chrono": "c",
+		"push_swap.h": "c",
+		"get_next_line.h": "c",
+		"error.h": "c",
+		"error_bonus.h": "c"
 	}
 }

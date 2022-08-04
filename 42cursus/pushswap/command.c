@@ -1,65 +1,56 @@
-#include "Libft/libft.h"
+#include "command.h"
 #include "push_swap.h"
+#include <unistd.h>
 
-t_node	*ft_pop(t_stack *s)
+static void	ft_print_cmd(int cmd)
 {
-	t_node	*tmp;
-
-	tmp = s->top;
-	s->top = s->top->next;
-	s->size--;
-	return (tmp);
+	if (cmd == PA)
+		write(1, "pa\n", 3);
+	else if (cmd == PB)
+		write(1, "pb\n", 3);
+	else if (cmd == SA)
+		write(1, "sa\n", 3);
+	else if (cmd == SB)
+		write(1, "sb\n", 3);
+	else if (cmd == RA)
+		write(1, "ra\n", 3);
+	else if (cmd == RB)
+		write(1, "rb\n", 3);
+	else if (cmd == RRA)
+		write(1, "rra\n", 4);
+	else if (cmd == RRB)
+		write(1, "rrb\n", 4);
 }
 
-void	*ft_push(t_stack *dst, t_stack *src)
+void	ft_command(t_data *data, int cmd)
 {
-	t_node	*tmp;
+	t_stack	*s;
+	int		success;
 
-	if (src->size)
-	{
-		tmp = ft_pop(src);
-		tmp -> next = dst->top;
-		dst->top = tmp;
-		dst->size++;
-	}
+	success = 1;
+	if (cmd == PA || cmd == SA || cmd == RA || cmd == RRA)
+		s = data->a;
+	else
+		s = data->b;
+	if (cmd == SA || cmd == SB)
+		success = ft_swap(s);
+	else if (cmd == RA || cmd == RB)
+		success = ft_rotate(s);
+	else if (cmd == RRA || cmd == RRB)
+		success = ft_rrotate(s);
+	else if (cmd == PA)
+		ft_push(data->a, data->b);
+	else if (cmd == PB)
+		ft_push(data->b, data->a);
+	if (success)
+		ft_print_cmd(cmd);
 }
 
-void	ft_swap(t_stack *s)
+void	ft_loop_command(t_data *data, int cmd, int cnt)
 {
-	t_node	*tmp;
+	int	i;
 
-	if (s->size < 2)
-		return ;
-	if (s->size == 2)
-		s->bottom = s->top;
-	tmp = s->top;
-	s->top = tmp->next;
-	tmp->next = s->top->next;
-	s->top->next = tmp;
-}
-
-void	ft_rotate(t_stack *s) {
-	t_node	*tmp;
-
-	if (s->size < 2)
-		return ;
-	tmp = s->top;
-	s->bottom->next = tmp;
-	s->top = s->top->next;
-}
-
-void	ft_rrotate(t_stack *s) {
-	t_node	*tmp;
-	int		i;
-
-	if (s->size < 2)
-		return ;
-	tmp = s->bottom;
-	tmp->next = s->top;
-	s->top = tmp;
 	i = -1;
-	tmp = s->top;
-	while (++i < s->size - 1)
-		tmp = tmp->next;
-	s->bottom = tmp;
+	while (++i < cnt)
+		ft_command(data, cmd);
 }
