@@ -1,5 +1,5 @@
 # include "util.h"
-# inlcude <pthread.h>
+# include <pthread.h>
 # include <sys/time.h>
 
 typedef struct s_philosopher
@@ -34,6 +34,7 @@ typedef enum e_status
 	THINKING,
 }	t_status;
 
+
 void	print_status(t_philosopher *philos, char *status)
 {
 	pthread_mutex_lock();
@@ -51,14 +52,14 @@ void	ft_check_philos_died(t_philosopher *philos)
 		else if (philos->status == EATING)
 			limit = gettimeofday();
 		else if (philos->status == SLEEPING)
-			limit = 
+			limit =
 		else if (philos->status == THINKING)
 
 	}
 }
 
 
-
+/*
 int main(int ac, char **av)
 {
 	t_philosopher		*philosophers;
@@ -67,3 +68,4 @@ int main(int ac, char **av)
 	while ()
 	ft_parse(ac, av);
 }
+*/

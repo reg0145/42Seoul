@@ -8,9 +8,10 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/<executable file>",
-            "args": [],
-            "cwd": "${workspaceFolder}"
+            "program": "${workspaceFolder}/${fileBasenameNoExtension}",
+            "args": [""],
+            "cwd": "${workspaceFolder}",
+			"preLaunchTask": "C/C++: gcc 활성 파일 빌드"
         }
     ]
 }

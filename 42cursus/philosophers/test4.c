@@ -15,18 +15,18 @@ typedef struct s_time
 
 typedef struct s_rule
 {
-	int		*forks;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	mutex_lock[2];
 	t_time	time;
 	int		flag;
 	char	*error;
-	pthread_mutex_t	mutex_lock[4];
 }	t_rule;
 
 typedef struct s_philosopher
 {
 	int	id;
-	int	*left_fork;
-	int	*right_fork;
+	pthread_mutex_t	**left_fork;
+	pthread_mutex_t	**right_fork;
 	int	updated_time;
 	int	eat_count;
 	int	flag;
@@ -67,37 +67,35 @@ int	init(t_rule **rule, t_philosopher **philos, t_time time, int cnt)
 	*philos = (t_philosopher *)ft_calloc(cnt, sizeof(t_philosopher));
 	if (!(*philos))
 		return (FAIL);
-	(*rule)->forks = (int *)ft_calloc(cnt, sizeof(int));
+	(*rule)->forks = (pthread_mutex_t *)ft_calloc(cnt, sizeof(pthread_mutex_t));
+	if (!(*rule)->forks)
+		return (FAIL);
 	i = -1;
 	while (++i < cnt)
 	{
+		pthread_mutex_init(((*rule)->forks + i) , NULL);
 		(*philos)[i].id = i + 1;
 		(*philos)[i].rule = *rule;
 		if (i % 2 == 0)
 			(*philos)[i].flag = ODD;
 		else
 			(*philos)[i].flag = EVEN;
-		(*rule)->forks[i] = 1;
 	}
 	if (cnt > 1)
 	{
 		i = 0;
 		while (++i < cnt)
 		{
-			(*philos)[i].right_fork = (*rule)->forks + i;
-			(*philos)[i].left_fork = (*rule)->forks + i - 1;
+			(*philos)[i].right_fork = &((*rule)->forks) + i;
+			(*philos)[i].left_fork = &((*rule)->forks) + i - 1;
 		}
-		(*philos)[0].right_fork = (*rule)->forks;
-		(*philos)[0].left_fork = (*rule)->forks + i -1;
+		(*philos)[0].right_fork = &((*rule)->forks);
+		(*philos)[0].left_fork = &((*rule)->forks) + i - 1;
 	}
 	(*rule)->time = time;
 	(*rule)->flag |= LIVE;
-
 	// 뮤텍스
 	pthread_mutex_init(&((*rule)->mutex_lock[0]), NULL);
-	pthread_mutex_init(&((*rule)->mutex_lock[1]), NULL);
-	pthread_mutex_init(&((*rule)->mutex_lock[2]), NULL);
-	pthread_mutex_init(&((*rule)->mutex_lock[3]), NULL);
 	return (OK);
 }
 
@@ -112,22 +110,12 @@ void	life_cycle(t_philosopher *philos)
 		continue ;
 	while (rule->flag & LIVE)
 	{
-		flag = LOOP;
-		while (flag == LOOP)
-		{
-			pthread_mutex_lock(&(rule->mutex_lock[1]));
-			if (*philos->left_fork && *philos->right_fork)
-			{
-				*philos->left_fork = 0;
-				*philos->right_fork = 0;
-				action(&(rule->mutex_lock[0]), "%ld %d is eating\n", philos->id);
-				flag = EXIT;
-			}
-			pthread_mutex_unlock(&(rule->mutex_lock[1]));
-		}
+		pthread_mutex_lock(*(philos->left_fork));
+		pthread_mutex_lock(*(philos->right_fork));
+		action(&(rule->mutex_lock[0]), "%ld %d is eating\n", philos->id);
+		pthread_mutex_unlock(*(philos->left_fork));
+		pthread_mutex_unlock(*(philos->right_fork));
 		usleep(rule->time.eat);
-		*philos->left_fork = 1;
-		*philos->right_fork = 1;
 		action(&(rule->mutex_lock[0]), "%ld %d is sleeping\n", philos->id);
 		usleep(rule->time.sleep);
 		action(&(rule->mutex_lock[0]), "%ld %d is thinking\n", philos->id);
@@ -136,16 +124,16 @@ void	life_cycle(t_philosopher *philos)
 
 int main (void)
 {
-	int			len = 10;
+	int			len = 1;
 	t_rule			*rule;
 	t_philosopher	*philos;
 	pthread_t	p_thread[len];
 
 	t_time time;
 
-	time.life = 3000;
+	time.life = 600;
 	time.eat = 300;
-	time.sleep = 100;
+	time.sleep = 300;
 	printf("start");
 	if (init(&rule, &philos, time, len))
 		return (1);
