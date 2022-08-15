@@ -5,6 +5,9 @@
 # include "check.h"
 # include <pthread.h>
 
+# define FAIL 1
+# define OK 0
+
 typedef struct s_rule
 {
 	pthread_mutex_t	*forks;
@@ -21,7 +24,7 @@ typedef struct s_philosopher
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 	int				eat_count;
-	t_rule			rule;
+	t_rule			*rule;
 }	t_philosopher;
 
 #endif

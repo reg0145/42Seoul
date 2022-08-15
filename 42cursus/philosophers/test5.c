@@ -104,10 +104,7 @@ void	life_cycle(t_philosopher *philos)
 
 	rule = philos->rule;
 	if (philos->id % 2 == 0)
-	{
-		printf("%d %d is thinking\n", (int)(get_passed_time(rule->s_time) * 1000), philos->id);
-		uxsleep(rule->time.eat / 2);
-	}
+		uxsleep((double)rule->time.eat / 2);
 	while (rule->flag & LIVE)
 	{
 		pthread_mutex_lock(philos->right_fork);
@@ -124,7 +121,7 @@ void	life_cycle(t_philosopher *philos)
 
 int main (void)
 {
-	int				len = 100;
+	int				len = 3;
 	t_rule			*rule;
 	t_philosopher	*philos;
 	pthread_t		p_thread[len];
@@ -134,23 +131,19 @@ int main (void)
 	time.life = 410;
 	time.eat = 200;
 	time.sleep = 200;
-	printf("------------\n");
 	if (init(&rule, &philos, time, len))
 		return (1);
 	int i = -1;
 	while (++i < len)
 	{
 		if (i == len -1 && i % 2 == 0)
-		{
-			printf("%d %d is thinking\n", (int)(get_passed_time(rule->s_time) * 1000), len);
 			usleep(rule->time.eat / 2);
-		}
 		pthread_create(&p_thread[i], NULL, (void *)life_cycle, (void*)&philos[i]);
-	}
-	while (++i < len)
 		pthread_detach(p_thread[i]);
+	}
 	usleep(rule->time.eat / 2);
+	sleep(10);
+	rule->flag ^= LIVE;
 	while (1)
 		continue ;
-	//rule->flag ^= LIVE;
 }
