@@ -19,13 +19,16 @@ void	*ft_calloc(size_t num, size_t size)
 	return ((void *)step);
 }
 
-double	get_passed_time(struct timeval s)
+long	get_passed_time(struct timeval s)
 {
 	struct timeval	e;
+	long			time;
 
 	if (gettimeofday(&e, NULL) == -1)
 		return (0);
-	return (e.tv_sec - s.tv_sec) + ((double)(e.tv_usec - s.tv_usec) / 1000000);
+	time = e.tv_sec - s.tv_sec;
+	time = ((time * 1000000) + e.tv_usec) - s.tv_usec;
+	return time / 1000;
 }
 
 long	uxsleep(double ms)
@@ -41,7 +44,7 @@ long	uxsleep(double ms)
 	now = 0;
 	while (now < passed)
 	{
-		usleep(250);
+		usleep(200);
 		gettimeofday(&e, NULL);
 		now = (e.tv_sec - s.tv_sec) + ((double)(e.tv_usec - s.tv_usec) / 1000000);
 	}

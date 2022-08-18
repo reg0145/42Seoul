@@ -10,21 +10,22 @@
 
 typedef struct s_rule
 {
-	pthread_mutex_t	*forks;
-	pthread_mutex_t	mutex_print;
-	struct timeval	s_time;
+	int				size;
 	int				eat_time;
 	int				life_time;
 	int				sleep_time;
+	struct timeval	s_time;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	mutex_print;
 }	t_rule;
 
 typedef struct s_philosopher
 {
 	int				id;
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	*right_fork;
 	int				eat_count;
 	t_rule			*rule;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
 }	t_philosopher;
 
 #endif

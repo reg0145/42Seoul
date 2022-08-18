@@ -3,9 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>  // usleep()
-#include <pthread.h>
 #include <sys/time.h>
-#include "check.h"
 
 t_rule	*init_rule(int *args)
 {
@@ -26,6 +24,7 @@ t_rule	*init_rule(int *args)
 		if (pthread_mutex_init(&rule->forks[i], NULL))
 			return (NULL);
 	}
+	rule->size = args[0];
 	rule->life_time = args[1];
 	rule->eat_time = args[2];
 	rule->sleep_time = args[3];
@@ -43,8 +42,8 @@ t_philosopher	*init_philos(t_rule *rule, int *args, int len)
 	i = -1;
 	while (++i < len)
 	{
-		philos->id = i + 1;
-		philos->rule = rule;
+		philos[i].id = i + 1;
+		philos[i].rule = rule;
 	}
 	if (len > 0)
 	{
@@ -69,7 +68,7 @@ int	init(t_philosopher **philos, t_rule **rule, int ac, char **av)
 	while (++i < ac)
 	{
 		args[i - 1] = ft_atoi(av[i]);
-		if (args[i] < 0)
+		if (args[i - 1] < 0)
 			return (FAIL);
 	}
 	*rule = init_rule(args); // rule 셋팅
@@ -89,21 +88,18 @@ void	philos_life(t_philosopher *philos)
 
 	rule = philos->rule;
 	if (philos->id % 2 == 0)
-	{
-		printf("%d %d is thinking\n", (int)(get_passed_time(rule->s_time) * 1000), philos->id);
 		uxsleep((double)rule->eat_time / 2);
-	}
 	while (1)
 	{
 		pthread_mutex_lock(philos->right_fork);
 		pthread_mutex_lock(philos->left_fork);
-		printf("%d %d is eating\n", (int)(get_passed_time(rule->s_time) * 1000), philos->id);
+		printf("%ld %d is eating\n", get_passed_time(rule->s_time), philos->id);
 		uxsleep(rule->eat_time);
 		pthread_mutex_unlock(philos->right_fork);
 		pthread_mutex_unlock(philos->left_fork);
-		printf("%d %d is sleeping\n", (int)(get_passed_time(rule->s_time) * 1000), philos->id);
+		printf("%ld %d is sleeping\n", get_passed_time(rule->s_time), philos->id);
 		uxsleep(rule->sleep_time);
-		printf("%d %d is thinking\n", (int)(get_passed_time(rule->s_time) * 1000), philos->id);
+		printf("%ld %d is thinking\n", get_passed_time(rule->s_time), philos->id);
 	}
 }
 
@@ -119,22 +115,23 @@ void	begin_philos_life(t_philosopher *philos, int len)
 		if (i == len -1 && i % 2 == 0)
 			usleep(philos->rule->eat_time / 2);
 		// 여러 쓰레드는 실행되고 특정 쓰레드가 실행되지 않을 때 처리 방법은?
-		if (!pthread_create(&pthread, NULL, (void *)philos_life, (void*)&philos[i]))
+		if (pthread_create(&pthread, NULL, (void *)philos_life, (void*)&philos[i]))
 			return ;
 		// pthread는 할당이 되지 않으면 에러를 내뿜는다.
-		if (!pthread_detach(pthread))
+		if (pthread_detach(pthread))
 			return ;
 	}
 }
 
 int main (int ac, char **av)
 {
-	t_philosopher *philos;
+	t_philosopher	*philos;
+	t_rule			*rule;
 
-	if (check_args(ac, av) || init(&philos, ac, av))
+	if (check_args(ac, av) || init(&philos, &rule, ac, av))
 	{
 		printf("Error");
 		return (0);
 	}
-	begin_philos_life(philos, ac - 1);
+	begin_philos_life(philos, philos->rule->size);
 }

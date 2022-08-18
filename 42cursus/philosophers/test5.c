@@ -109,19 +109,19 @@ void	life_cycle(t_philosopher *philos)
 	{
 		pthread_mutex_lock(philos->right_fork);
 		pthread_mutex_lock(philos->left_fork);
-		printf("%d %d is eating\n", (int)(get_passed_time(rule->s_time) * 1000), philos->id);
+		printf("%d %d is eating\n", get_passed_time(rule->s_time), philos->id);
 		uxsleep(rule->time.eat);
 		pthread_mutex_unlock(philos->right_fork);
 		pthread_mutex_unlock(philos->left_fork);
-		printf("%d %d is sleeping\n", (int)(get_passed_time(rule->s_time) * 1000), philos->id);
+		printf("%d %d is sleeping\n", get_passed_time(rule->s_time), philos->id);
 		uxsleep(rule->time.sleep);
-		printf("%d %d is thinking\n", (int)(get_passed_time(rule->s_time) * 1000), philos->id);
+		printf("%d %d is thinking\n", get_passed_time(rule->s_time), philos->id);
 	}
 }
 
 int main (void)
 {
-	int				len = 3;
+	int				len = 5;
 	t_rule			*rule;
 	t_philosopher	*philos;
 	pthread_t		p_thread[len];
@@ -143,7 +143,6 @@ int main (void)
 	}
 	usleep(rule->time.eat / 2);
 	sleep(10);
-	rule->flag ^= LIVE;
 	while (1)
 		continue ;
 }
