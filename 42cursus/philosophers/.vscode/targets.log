@@ -10,15 +10,17 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Thu Aug 18 16:30:05 2022
- 
+# Make data base, printed on Thu Aug 18 16:52:37 2022
 
 # Variables
 
 # automatic
+ 
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
+# environment
+VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -26,25 +28,27 @@ make: *** No rule to make target `all'.  Stop.
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /goinfre/donghyuk/42seoul/42cursus/philosophers
+CURDIR := /Users/colin/Backup/Subject/42seoul/42cursus/philosophers
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"58a40381a39144f7263b92e8e429f874.ko","_translationsConfigFile":"/Users/colin/Library/Application Support/Code/clp/58a40381a39144f7263b92e8e429f874.ko/tcf.json","_cacheRoot":"/Users/colin/Library/Application Support/Code/clp/58a40381a39144f7263b92e8e429f874.ko","_resolvedLanguagePackCoreLocation":"/Users/colin/Library/Application Support/Code/clp/58a40381a39144f7263b92e8e429f874.ko/7db1a2b88f7557e0a43fec75b6ba7e50b3e9f77e","_corruptedFile":"/Users/colin/Library/Application Support/Code/clp/58a40381a39144f7263b92e8e429f874.ko/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
 # makefile
 MAKEFILE_LIST := 
 # environment
-VSCODE_NODE_CACHED_DATA_DIR = /Users/donghyuk/Library/Application Support/Code/CachedData/6ab598523be7a800d7f3eb4d92d7ab9a66069390
+VSCODE_VERBOSE_LOGGING = true
 # environment
-VERBOSE_LOGGING = true
+__CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_LOGS = /Users/donghyuk/Library/Application Support/Code/logs/20220818T162959
+INFOPATH = /opt/homebrew/share/info:
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cl9w0034tg/T/vscode-ipc-410ce4d9-6ce2-4bc2-9403-9f1a2ed04e6d.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/r_/2rxyw_3s2z76jq43jwg2f_j80000gn/T/vscode-ipc-601ea3c7-560d-4224-a231-6238fe8ab8b6.sock
 # environment
-PATH = /Users/donghyuk/.brew/bin:/Users/donghyuk/.brew/bin:/Users/donghyuk/.brew/bin:/Users/donghyuk/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+VSCODE_CWD = /
+# environment
+PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
@@ -54,21 +58,33 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.U6WB2flZ8c/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.0mgLYINLCT/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-PWD = /goinfre/donghyuk/42seoul/42cursus/philosophers
+VSCODE_PIPE_LOGGING = true
 # environment
-HOME = /Users/donghyuk
+PWD = /Users/colin/Backup/Subject/42seoul/42cursus/philosophers
+# environment
+HOMEBREW_CELLAR = /opt/homebrew/Cellar
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+MANPATH = /opt/homebrew/share/man::
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+HOME = /Users/colin
 # default
-MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-LOGNAME = donghyuk
+VSCODE_CODE_CACHE_PATH = /Users/colin/Library/Application Support/Code/CachedData/7db1a2b88f7557e0a43fec75b6ba7e50b3e9f77e
+# environment
+LOGNAME = colin
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
-ZSH = /Users/donghyuk/.oh-my-zsh
+ZSH = /Users/colin/.oh-my-zsh
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -84,27 +100,23 @@ SHLVL = 1
 # default
 MAKE_VERSION := 3.81
 # environment
-AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
-# environment
-USER = donghyuk
+USER = colin
 # makefile
 .DEFAULT_GOAL := 
-# environment
-PIPE_LOGGING = true
 # environment
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
-MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # default
 .VARIABLES := 
 # environment
-TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cl9w0034tg/T/
+TMPDIR = /var/folders/r_/2rxyw_3s2z76jq43jwg2f_j80000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/donghyuk/Library/Application Support/Code/1.39.2-main.sock
+VSCODE_IPC_HOOK = /Users/colin/Library/Application Support/Code/1.63.0-main.sock
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -112,13 +124,19 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.2120
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.2911604.2911610
+# environment
+HOMEBREW_PREFIX = /opt/homebrew
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
-__CF_USER_TEXT_ENCODING = 0x1934F:0x0:0x0
+HOMEBREW_REPOSITORY = /opt/homebrew
+# environment
+__CF_USER_TEXT_ENCODING = 0x1F5:0x3:0x33
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
 # automatic
@@ -138,10 +156,10 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 16939
+VSCODE_PID = 33574
 # variable set hash-table stats:
  
-# Load=62/1024=6%, Rehash=0, Collisions=2/83=2%
+# Load=71/1024=7%, Rehash=0, Collisions=1/92=1%
 
 # Pattern-specific Variable Values
 
@@ -149,9 +167,9 @@ VSCODE_PID = 16939
 
 # Directories
 
-# . (device 16777220, inode 1152921500313666741): 37 files, no impossibilities.
+# . (device 16777229, inode 38568932): 38 files, no impossibilities.
 
-# 37 files, no impossibilities in 1 directories.
+# 38 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -223,6 +241,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Thu Aug 18 16:30:05 2022
+# Finished Make data base on Thu Aug 18 16:52:37 2022
 
  

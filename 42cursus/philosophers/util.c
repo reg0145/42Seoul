@@ -44,7 +44,7 @@ long	uxsleep(double ms)
 	now = 0;
 	while (now < passed)
 	{
-		usleep(200);
+		usleep(100);
 		gettimeofday(&e, NULL);
 		now = (e.tv_sec - s.tv_sec) + ((double)(e.tv_usec - s.tv_usec) / 1000000);
 	}

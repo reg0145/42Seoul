@@ -11,9 +11,9 @@
 typedef struct s_rule
 {
 	int				size;
-	int				eat_time;
-	int				life_time;
-	int				sleep_time;
+	long			eat_time;
+	long			life_time;
+	long			sleep_time;
 	struct timeval	s_time;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	mutex_print;
@@ -23,6 +23,7 @@ typedef struct s_philosopher
 {
 	int				id;
 	int				eat_count;
+	long			eat_time;
 	t_rule			*rule;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;

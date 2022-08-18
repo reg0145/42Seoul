@@ -92,14 +92,42 @@ void	philos_life(t_philosopher *philos)
 	while (1)
 	{
 		pthread_mutex_lock(philos->right_fork);
+		printf("%ld %d has taken a fork\n", get_passed_time(rule->s_time), philos->id);
 		pthread_mutex_lock(philos->left_fork);
-		printf("%ld %d is eating\n", get_passed_time(rule->s_time), philos->id);
+		printf("%ld %d has taken a fork\n", get_passed_time(rule->s_time), philos->id);
+		philos->eat_time = get_passed_time(rule->s_time);
+		printf("%ld %d is eating\n", philos->eat_time, philos->id);
 		uxsleep(rule->eat_time);
 		pthread_mutex_unlock(philos->right_fork);
 		pthread_mutex_unlock(philos->left_fork);
 		printf("%ld %d is sleeping\n", get_passed_time(rule->s_time), philos->id);
 		uxsleep(rule->sleep_time);
 		printf("%ld %d is thinking\n", get_passed_time(rule->s_time), philos->id);
+	}
+}
+
+void	check_philos_die(t_philosopher *philos, t_rule *rule)
+{
+	int				i;
+	long			time;
+	struct timeval	cur_time;
+
+	while (1)
+	{
+		i = -1;
+		while (++i < rule->size)
+		{
+			time = get_passed_time(rule->s_time);
+			if ((time - philos[i].eat_time) >= rule->life_time)
+			{
+
+				printf("life time : %ld\n", rule->life_time);
+				printf("philo[%d] last eat time : %ld\n", philos->id, time - philos[i].eat_time);
+				printf("philo[%d] time : %ld\n", philos->id, time);
+				printf("die~\n");
+				return ;
+			}
+		}
 	}
 }
 
@@ -134,4 +162,5 @@ int main (int ac, char **av)
 		return (0);
 	}
 	begin_philos_life(philos, philos->rule->size);
+	check_philos_die(philos, rule);
 }
