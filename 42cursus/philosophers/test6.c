@@ -5,16 +5,34 @@
 #include <sys/time.h>
 #include <pthread.h>
 
-void test()
-{
-	int	cnt;
 
-	cnt = 0;
+void test(int *p_cnt)
+{
+	*p_cnt = 10;
 	while (1)
 	{
-		printf("%d %d\n", sleep(1), ++cnt);
+		printf("%d %d\n", sleep(1), ++(*p_cnt));
 	}
 }
+
+int data(int data)
+{
+	return data;
+}
+
+void test2(int *p_cnt)
+{
+	int data1 = 1;
+	while (1)
+	{
+		data1 = data(*p_cnt);
+		if (data1 == 20)
+			printf("ok");
+	}
+}
+
+
+
 int	main()
 {
 	struct timeval s_tv;
@@ -32,6 +50,8 @@ int	main()
 	int write_usec;
 	int	print_sec;
 	int	print_usec;
+	int	*p_cnt;
+	p_cnt = (int *)ft_calloc(1, sizeof(int));
 	/*
 	pthread_create(&thread, NULL, (void *)test, NULL);
 	cnt = 0;
@@ -62,6 +82,10 @@ int	main()
 	printf("print start : %ld.%d초\n", ps_tv.tv_sec, ps_tv.tv_usec);
 	printf("print end : %ld.%d초\n", pe_tv.tv_sec, pe_tv.tv_usec);
 	*/
-	if (pthread_detach(thread))
-		printf("error");
+	pthread_create(&thread, NULL, (void *)test, (void *)p_cnt);
+	pthread_detach(thread);
+	pthread_create(&thread, NULL, (void *)test2, (void *)p_cnt);
+	pthread_detach(thread);
+	while(1)
+		continue ;
 }

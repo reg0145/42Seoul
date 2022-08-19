@@ -5,6 +5,13 @@
 #include <unistd.h>  // usleep()
 #include <sys/time.h>
 
+void	uxprintf(t_philosopher *philos, char *say)
+{
+	pthread_mutex_lock(philos->rule->m_print);
+	printf(say, get_passed_time(philos->rule->s_time), philos->id);
+	pthread_mutex_unlock(philos->rule->m_print);
+}
+
 t_rule	*init_rule(int *args)
 {
 	int		i;
@@ -16,14 +23,20 @@ t_rule	*init_rule(int *args)
 	if (gettimeofday(&rule->s_time, NULL))
 		return (NULL);
 	rule->forks = (pthread_mutex_t *)ft_calloc(args[0],sizeof(pthread_mutex_t)); // 뮤텍스 포크 셋팅
-	if (rule->forks == NULL)
+	rule->m_print = (pthread_mutex_t *)ft_calloc(1, sizeof(pthread_mutex_t));
+	rule->m_eat = (pthread_mutex_t *)ft_calloc(args[0], sizeof(pthread_mutex_t));
+	if (rule->m_print == NULL || rule->forks == NULL || rule->m_eat == NULL)
 		return (NULL);
 	i = -1;
 	while (++i < args[0])
 	{
 		if (pthread_mutex_init(&rule->forks[i], NULL))
 			return (NULL);
+		if (pthread_mutex_init(&rule->m_eat[i], NULL))
+			return (NULL);
 	}
+	if (pthread_mutex_init(rule->m_print, NULL))
+		return (NULL);
 	rule->size = args[0];
 	rule->life_time = args[1];
 	rule->eat_time = args[2];
@@ -44,6 +57,7 @@ t_philosopher	*init_philos(t_rule *rule, int *args, int len)
 	{
 		philos[i].id = i + 1;
 		philos[i].rule = rule;
+		philos[i].m_eat = &rule->m_eat[i];
 	}
 	if (len > 0)
 	{
@@ -83,8 +97,7 @@ int	init(t_philosopher **philos, t_rule **rule, int ac, char **av)
 void	philos_life(t_philosopher *philos)
 {
 	t_rule	*rule;
-	int		flag;
-	int		who;
+	long	time;
 
 	rule = philos->rule;
 	if (philos->id % 2 == 0)
@@ -92,39 +105,46 @@ void	philos_life(t_philosopher *philos)
 	while (1)
 	{
 		pthread_mutex_lock(philos->right_fork);
-		printf("%ld %d has taken a fork\n", get_passed_time(rule->s_time), philos->id);
+		uxprintf(philos, "%ld %d has taken a fork\n");
 		pthread_mutex_lock(philos->left_fork);
-		printf("%ld %d has taken a fork\n", get_passed_time(rule->s_time), philos->id);
-		philos->eat_time = get_passed_time(rule->s_time);
-		printf("%ld %d is eating\n", philos->eat_time, philos->id);
+		uxprintf(philos, "%ld %d has taken a fork\n");
+		time = get_passed_time(rule->s_time);
+		pthread_mutex_lock(philos->m_eat);
+		philos->eat_time = time;
+		pthread_mutex_unlock(philos->m_eat);
+		uxprintf(philos, "%ld %d is eating\n");
 		uxsleep(rule->eat_time);
 		pthread_mutex_unlock(philos->right_fork);
 		pthread_mutex_unlock(philos->left_fork);
-		printf("%ld %d is sleeping\n", get_passed_time(rule->s_time), philos->id);
+		uxprintf(philos, "%ld %d is sleeping\n");
 		uxsleep(rule->sleep_time);
-		printf("%ld %d is thinking\n", get_passed_time(rule->s_time), philos->id);
+		uxprintf(philos, "%ld %d is thinking\n");
 	}
+}
+
+void	uxfree()
+{
+
 }
 
 void	check_philos_die(t_philosopher *philos, t_rule *rule)
 {
 	int				i;
-	long			time;
-	struct timeval	cur_time;
+	long			philo_time;
 
 	while (1)
 	{
 		i = -1;
 		while (++i < rule->size)
 		{
-			time = get_passed_time(rule->s_time);
-			if ((time - philos[i].eat_time) >= rule->life_time)
+			philo_time = get_passed_time(rule->s_time);
+			pthread_mutex_lock(philos[i].m_eat);
+			philo_time = philo_time - philos[i].eat_time;
+			pthread_mutex_unlock(philos[i].m_eat);
+			if (philo_time >= rule->life_time)
 			{
-
-				printf("life time : %ld\n", rule->life_time);
-				printf("philo[%d] last eat time : %ld\n", philos->id, time - philos[i].eat_time);
-				printf("philo[%d] time : %ld\n", philos->id, time);
-				printf("die~\n");
+				pthread_mutex_lock(rule->m_print);
+				printf("%ld %d died\n", philo_time, philos->id);
 				return ;
 			}
 		}
@@ -163,4 +183,7 @@ int main (int ac, char **av)
 	}
 	begin_philos_life(philos, philos->rule->size);
 	check_philos_die(philos, rule);
+	while (1)
+		continue ;
+	uxfree();
 }

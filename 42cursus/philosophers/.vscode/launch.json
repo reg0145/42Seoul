@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Debug",
             "program": "${workspaceFolder}/${fileBasenameNoExtension}",
-            "args": ["10", "410", "200", "200"],
+            "args": ["200", "410", "200", "200"],
             "cwd": "${workspaceFolder}",
 			"preLaunchTask": "gcc build"
         }
