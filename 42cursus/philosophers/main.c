@@ -7,9 +7,9 @@
 
 void	uxprintf(t_philosopher *philos, char *say)
 {
-	pthread_mutex_lock(philos->rule->m_print);
+	pthread_mutex_lock(&(philos->rule->m_print));
 	printf(say, get_passed_time(philos->rule->s_time), philos->id);
-	pthread_mutex_unlock(philos->rule->m_print);
+	pthread_mutex_unlock(&(philos->rule->m_print));
 }
 
 t_rule	*init_rule(int *args)
@@ -23,9 +23,8 @@ t_rule	*init_rule(int *args)
 	if (gettimeofday(&rule->s_time, NULL))
 		return (NULL);
 	rule->forks = (pthread_mutex_t *)ft_calloc(args[0],sizeof(pthread_mutex_t)); // 뮤텍스 포크 셋팅
-	rule->m_print = (pthread_mutex_t *)ft_calloc(1, sizeof(pthread_mutex_t));
 	rule->m_eat = (pthread_mutex_t *)ft_calloc(args[0], sizeof(pthread_mutex_t));
-	if (rule->m_print == NULL || rule->forks == NULL || rule->m_eat == NULL)
+	if (rule->forks == NULL || rule->m_eat == NULL)
 		return (NULL);
 	i = -1;
 	while (++i < args[0])
@@ -35,7 +34,7 @@ t_rule	*init_rule(int *args)
 		if (pthread_mutex_init(&rule->m_eat[i], NULL))
 			return (NULL);
 	}
-	if (pthread_mutex_init(rule->m_print, NULL))
+	if (pthread_mutex_init(&rule->m_print, NULL))
 		return (NULL);
 	rule->size = args[0];
 	rule->life_time = args[1];
@@ -122,32 +121,44 @@ void	philos_life(t_philosopher *philos)
 	}
 }
 
-void	uxfree()
+void	uxfree(t_philosopher *philos, t_rule *rule)
 {
-
+	if (rule != NULL)
+	{
+		if (rule->forks != NULL)
+			free(rule->forks);
+		if (rule->m_eat != NULL)
+			free(rule->m_eat);
+		free(rule);
+	}
+	if (philos != NULL)
+		free(philos);
 }
 
 void	check_philos_die(t_philosopher *philos, t_rule *rule)
 {
 	int				i;
-	long			philo_time;
+	long			cur_time;
+	long			philo_eat_time;
 
 	while (1)
 	{
 		i = -1;
 		while (++i < rule->size)
 		{
-			philo_time = get_passed_time(rule->s_time);
+			cur_time = get_passed_time(rule->s_time);
 			pthread_mutex_lock(philos[i].m_eat);
-			philo_time = philo_time - philos[i].eat_time;
+			philo_eat_time = philos[i].eat_time;
 			pthread_mutex_unlock(philos[i].m_eat);
-			if (philo_time >= rule->life_time)
+			cur_time = get_passed_time(rule->s_time);
+			if (cur_time - philo_eat_time >= rule->life_time)
 			{
-				pthread_mutex_lock(rule->m_print);
-				printf("%ld %d died\n", philo_time, philos->id);
+				pthread_mutex_lock(&rule->m_print);
+				printf("%ld %d died\n", cur_time, philos->id);
 				return ;
 			}
 		}
+		
 	}
 }
 
@@ -183,7 +194,5 @@ int main (int ac, char **av)
 	}
 	begin_philos_life(philos, philos->rule->size);
 	check_philos_die(philos, rule);
-	while (1)
-		continue ;
-	uxfree();
+	uxfree(philos, rule);
 }

@@ -1,5 +1,9 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory `/Users/colin/Backup/Subject/42seoul/42cursus/philosophers'
-make: Nothing to be done for `all'.
-make: Leaving directory `/Users/colin/Backup/Subject/42seoul/42cursus/philosophers'
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/goinfre/donghyuk/42seoul/42cursus/philosophers'
+cc -Wall -Wextra -Werror -c -o main.o main.c
+ 
+cc -Wall -Wextra -Werror -c -o util.o util.c
+cc -Wall -Wextra -Werror -c -o check.o check.c
+cc -Wall -Wextra -Werror -o main main.o util.o check.o
+make: Leaving directory `/goinfre/donghyuk/42seoul/42cursus/philosophers'
  

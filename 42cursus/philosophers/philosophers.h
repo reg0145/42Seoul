@@ -15,8 +15,8 @@ typedef struct s_rule
 	long			life_time;
 	long			sleep_time;
 	struct timeval	s_time;
+	pthread_mutex_t	m_print;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t	*m_print;
 	pthread_mutex_t	*m_eat;
 }	t_rule;
 
