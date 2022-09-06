@@ -8,9 +8,15 @@
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
-				"${file}",
-				"util.c",
-				"check.c",
+				/*
+				"${fileDirname}/philo.c",
+				"${fileDirname}/check.c",
+				"${fileDirname}/init.c",
+				"${fileDirname}/util.c",
+				"${fileDirname}/util_ext.c",
+				"-I../includes",
+				*/
+				"*.c",
 				"-o",
 				"${fileDirname}/${fileBasenameNoExtension}"
 			],

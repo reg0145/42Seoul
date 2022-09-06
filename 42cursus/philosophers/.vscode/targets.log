@@ -6,11 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
 
-# Make data base, printed on Mon Aug 22 13:33:10 2022
+# Make data base, printed on Thu Aug 25 17:11:32 2022
 
- 
 # Variables
 
 # automatic
@@ -26,29 +24,29 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /goinfre/donghyuk/42seoul/42cursus/philosophers
+CURDIR := /Users/colin/Backup/Subject/42seoul/42cursus/philosophers
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"58a40381a39144f7263b92e8e429f874.ko","_translationsConfigFile":"/Users/colin/Library/Application Support/Code/clp/58a40381a39144f7263b92e8e429f874.ko/tcf.json","_cacheRoot":"/Users/colin/Library/Application Support/Code/clp/58a40381a39144f7263b92e8e429f874.ko","_resolvedLanguagePackCoreLocation":"/Users/colin/Library/Application Support/Code/clp/58a40381a39144f7263b92e8e429f874.ko/7db1a2b88f7557e0a43fec75b6ba7e50b3e9f77e","_corruptedFile":"/Users/colin/Library/Application Support/Code/clp/58a40381a39144f7263b92e8e429f874.ko/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
-# makefile (from `Makefile', line 19)
-OBJS = $(SRCS:.c=.o)
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cl9w0034tg/T/vscode-ipc-8b0950d0-8f9a-4bb7-979b-d27948139a82.sock
+__CFBundleIdentifier = com.microsoft.VSCode
+# environment
+INFOPATH = /opt/homebrew/share/info:
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/r_/2rxyw_3s2z76jq43jwg2f_j80000gn/T/vscode-ipc-708c85ed-1b17-4aea-93c0-7c64071277f2.sock
 # environment
 VSCODE_CWD = /
 # environment
-PATH = /Users/donghyuk/.brew/bin:/Users/donghyuk/.brew/bin:/Users/donghyuk/.brew/bin:/Users/donghyuk/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
-# environment
-LaunchInstanceID = 2AC66E19-4B89-43C4-AD28-F3CEB0339CC4
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -56,29 +54,36 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.AzhU0gOOiG/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.0mgLYINLCT/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
 VSCODE_PIPE_LOGGING = true
+# makefile (from `Makefile', line 19)
+OBJS = $(SRCS:.c=.o)
 # environment
-PWD = /goinfre/donghyuk/42seoul/42cursus/philosophers
+PWD = /Users/colin/Backup/Subject/42seoul/42cursus/philosophers
+# environment
+HOMEBREW_CELLAR = /opt/homebrew/Cellar
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+MANPATH = /opt/homebrew/share/man::
 # environment
-HOME = /Users/donghyuk
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+HOME = /Users/colin
 # default
-MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/donghyuk/Library/Application Support/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+VSCODE_CODE_CACHE_PATH = /Users/colin/Library/Application Support/Code/CachedData/7db1a2b88f7557e0a43fec75b6ba7e50b3e9f77e
 # environment
-LOGNAME = donghyuk
+ 
+LOGNAME = colin
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
-ZSH = /Users/donghyuk/.oh-my-zsh
+ZSH = /Users/colin/.oh-my-zsh
 # makefile (from `Makefile', line 18)
 CFLAG = -Wall -Wextra -Werror
 # environment
@@ -100,26 +105,25 @@ CC = cc
 # default
 MAKE_VERSION := 3.81
 # environment
-USER = donghyuk
+USER = colin
 # makefile
 .DEFAULT_GOAL := all
 # makefile (from `Makefile', line 20)
 NAME = main
 # environment
- 
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
-MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # default
 .VARIABLES := 
 # environment
-TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cl9w0034tg/T/
+TMPDIR = /var/folders/r_/2rxyw_3s2z76jq43jwg2f_j80000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/donghyuk/Library/Application Support/Code/1.67.2-main.sock
+VSCODE_IPC_HOOK = /Users/colin/Library/Application Support/Code/1.63.0-main.sock
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -127,13 +131,17 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000001.Electron
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.2911604.2911610
+# environment
+HOMEBREW_PREFIX = /opt/homebrew
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
 # environment
-__CF_USER_TEXT_ENCODING = 0x1934F:0x0:0x0
+HOMEBREW_REPOSITORY = /opt/homebrew
+# environment
+__CF_USER_TEXT_ENCODING = 0x1F5:0x3:0x33
 # environment
 COMMAND_MODE = unix2003
 # default
@@ -144,8 +152,6 @@ MAKEFILES :=
 PAGER = less
 # environment
 LC_ALL = C
-# environment
-SECURITYSESSIONID = 186a4
 # automatic
 ^F = $(notdir $^)
 # default
@@ -157,9 +163,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 97811
+VSCODE_PID = 61540
 # variable set hash-table stats:
-# Load=72/1024=7%, Rehash=0, Collisions=3/100=3%
+# Load=76/1024=7%, Rehash=0, Collisions=5/104=5%
 
 # Pattern-specific Variable Values
 
@@ -167,9 +173,9 @@ VSCODE_PID = 97811
 
 # Directories
 
-# . (device 16777221, inode 1152921500313415800): 41 files, no impossibilities.
+# . (device 16777229, inode 41283730): 44 files, no impossibilities.
 
-# 41 files, no impossibilities in 1 directories.
+# 44 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -200,8 +206,7 @@ all: main
 # Not a target:
 main.c:
 #  Implicit rule search has been done.
- 
-#  Last modified 2022-08-19 13:47:35
+#  Last modified 2022-08-22 16:56:49
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -210,7 +215,7 @@ main.c:
 # Not a target:
 check.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-19 13:35:15
+#  Last modified 2022-08-22 16:56:49
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -225,7 +230,7 @@ check.c:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-19 13:51:21
+#  Last modified 2022-08-22 16:56:49
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -234,7 +239,7 @@ Makefile:
 # Not a target:
 util.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-19 13:35:15
+#  Last modified 2022-08-22 16:56:49
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -273,7 +278,7 @@ clean:
 
 main: main.o util.o check.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-19 13:51:27
+#  Last modified 2022-08-22 16:57:05
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -285,7 +290,7 @@ main: main.o util.o check.o
 main.o: main.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `main'
-#  Last modified 2022-08-19 13:51:27
+#  Last modified 2022-08-22 16:56:49
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -297,7 +302,7 @@ main.o: main.c
 check.o: check.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `check'
-#  Last modified 2022-08-19 13:51:27
+#  Last modified 2022-08-22 16:56:49
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -309,7 +314,7 @@ check.o: check.c
 util.o: util.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `util'
-#  Last modified 2022-08-19 13:51:27
+#  Last modified 2022-08-22 16:56:49
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -331,6 +336,6 @@ util.o: util.c
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Aug 22 13:33:10 2022
+# Finished Make data base on Thu Aug 25 17:11:32 2022
 
  

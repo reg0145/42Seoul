@@ -8,8 +8,8 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/${fileBasenameNoExtension}",
-            "args": ["200", "403", "200", "200"],
+            "program": "${workspaceFolder}/philo/${fileBasenameNoExtension}",
+            "args": ["200", "610", "200", "5"],
             "cwd": "${workspaceFolder}",
 			"preLaunchTask": "gcc build"
         }
