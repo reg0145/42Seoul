@@ -1,7 +1,7 @@
 #include <sys/time.h>
 #include <unistd.h>
 #include <stdio.h>
-#include "../includes/type.h"
+#include "type.h"
 
 long	get_passed_time(struct timeval s)
 {
@@ -39,6 +39,8 @@ long	uxsleep(double ms)
 void	uxprintf(t_philosopher *philos, char *say)
 {
 	pthread_mutex_lock(&(philos->rule->m_print));
+	if (philos->rule->status == DIE)
+		usleep(10000000);
 	printf(say, get_passed_time(philos->rule->s_time), philos->id);
 	pthread_mutex_unlock(&(philos->rule->m_print));
 }

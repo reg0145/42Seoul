@@ -1,5 +1,5 @@
-#include "../includes/type.h"
-#include "../includes/util.h"
+#include "type.h"
+#include "util.h"
 #include <sys/time.h>
 
 void	init_rule_ext(t_rule *rule, int *ag, int ac)

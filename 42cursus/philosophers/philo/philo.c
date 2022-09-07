@@ -1,4 +1,4 @@
-#include "../includes/philo.h"
+#include "philo.h"
 
 void	philos_eat_count(t_philosopher *philos)
 {
@@ -16,12 +16,24 @@ void	philos_eat_count(t_philosopher *philos)
 
 void	uxfree(t_philosopher *philos, t_rule *rule)
 {
+	int	i;
+
 	if (rule != NULL)
 	{
 		if (rule->forks != NULL)
+		{
+			i = -1;
+			while (++i < rule->size)
+				pthread_mutex_destroy(&rule->forks[i]);
 			free(rule->forks);
+		}
 		if (rule->m_eat != NULL)
+		{
+			i = -1;
+			while (++i < rule->size)
+				pthread_mutex_destroy(&rule->m_eat[i]);
 			free(rule->m_eat);
+		}
 		free(rule);
 	}
 	if (philos != NULL)
@@ -77,7 +89,6 @@ void	begin_philos_life(t_philosopher *philos, int len)
 
 int	main(int ac, char **av)
 {
-
 	t_philosopher	*philos;
 	t_rule			*rule;
 
@@ -86,11 +97,12 @@ int	main(int ac, char **av)
 		printf("Error");
 		return (0);
 	}
-	if (check_eat_count(philos))
+	if (check_count(rule))
 	{
 		begin_philos_life(philos, philos->rule->size);
 		check_philos_die(philos, rule);
 	}
 	uxfree(philos, rule);
+	while(1);
 	return (0);
 }

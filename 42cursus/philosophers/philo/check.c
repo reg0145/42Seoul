@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "../includes/util.h"
-#include "../includes/type.h"
+#include "util.h"
+#include "type.h"
 
 static int	check_arg(char	*arg)
 {
@@ -43,8 +43,10 @@ int	check_args(int ac, char **av)
 	return (0);
 }
 
-int	check_eat_count(t_rule	*rule)
+int	check_count(t_rule	*rule)
 {
+	if (rule->size == 0)
+		return (0);
 	if (rule->max_eat_flag && rule->max_eat_count <= 0)
 		return (0);
 	return (1);
@@ -70,6 +72,7 @@ void	check_philos_die(t_philosopher *philos, t_rule *rule)
 		if (cur_time - philo_eat_time >= rule->life_time \
 			|| (rule->max_eat_flag && eat_count <= 0))
 		{
+			rule->status = DIE;
 			pthread_mutex_lock(&rule->m_print);
 			if (cur_time - philo_eat_time >= rule->life_time)
 				printf("%ld %d died\n", cur_time, philos->id);
