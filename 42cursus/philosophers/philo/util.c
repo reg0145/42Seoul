@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   util.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/08 14:25:30 by donghyuk          #+#    #+#             */
+/*   Updated: 2022/09/08 14:26:06 by donghyuk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <limits.h>
@@ -18,7 +30,7 @@ void	*ft_calloc(size_t num, size_t size)
 	return ((void *)step);
 }
 
-int	ft_isdigit(char	c)
+int	ft_isdigit(char c)
 {
 	return (c >= '0' && c <= '9');
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   type.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/08 14:25:26 by donghyuk          #+#    #+#             */
+/*   Updated: 2022/09/08 14:25:52 by donghyuk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef TYPE_H
 # define TYPE_H
 
@@ -24,7 +36,7 @@ typedef struct s_rule
 	int				max_eat_count;
 	pthread_mutex_t	m_die;
 	pthread_mutex_t	m_print;
-	pthread_mutex_t m_eat_cnt;
+	pthread_mutex_t	m_eat_cnt;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	*m_eat;
 	struct timeval	s_time;

@@ -6,7 +6,7 @@
 #    By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 17:44:07 by donghyuk          #+#    #+#              #
-#    Updated: 2022/09/08 03:19:08 by donghyuk         ###   ########.fr        #
+#    Updated: 2022/09/08 14:51:42 by donghyuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,8 @@ SRCS =	philo.c \
 		util.c \
 		init.c \
 		check.c \
+		philo_ext.c \
+		check_ext.c \
 		util_ext.c
 
 CC = cc
