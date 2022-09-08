@@ -34,7 +34,9 @@ t_rule	*init_rule(int *ag, int ac)
 		if (pthread_mutex_init(&rule->forks[i], NULL) \
 			|| pthread_mutex_init(&rule->m_eat[i], NULL))
 			return (NULL);
-	if (pthread_mutex_init(&rule->m_print, 0))
+	if (pthread_mutex_init(&rule->m_print, NULL) \
+		|| pthread_mutex_init(&rule->m_die, NULL) \
+		|| pthread_mutex_init(&rule->m_eat_cnt, NULL))
 		return (NULL);
 	init_rule_ext(rule, ag, ac);
 	return (rule);

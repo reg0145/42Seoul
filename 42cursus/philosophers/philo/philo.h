@@ -8,7 +8,4 @@
 # include "util.h"
 # include "check.h"
 
-# define FAIL 1
-# define OK 0
-
 #endif

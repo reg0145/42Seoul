@@ -45,6 +45,8 @@ int	check_args(int ac, char **av)
 
 int	check_count(t_rule	*rule)
 {
+	if (rule == NULL)
+		return (0);
 	if (rule->size == 0)
 		return (0);
 	if (rule->max_eat_flag && rule->max_eat_count <= 0)
@@ -66,17 +68,35 @@ void	check_philos_die(t_philosopher *philos, t_rule *rule)
 			i = 0;
 		pthread_mutex_lock(philos[i].m_eat);
 		philo_eat_time = philos[i].eat_time;
+		pthread_mutex_lock(&rule->m_eat_cnt);
 		eat_count = rule->eat_count;
+		pthread_mutex_unlock(&rule->m_eat_cnt);
 		pthread_mutex_unlock(philos[i].m_eat);
 		cur_time = get_passed_time(rule->s_time);
 		if (cur_time - philo_eat_time >= rule->life_time \
 			|| (rule->max_eat_flag && eat_count <= 0))
 		{
-			rule->status = DIE;
 			pthread_mutex_lock(&rule->m_print);
+			set_rule_status(&rule->m_die, &rule->status, DIE);
 			if (cur_time - philo_eat_time >= rule->life_time)
 				printf("%ld %d died\n", cur_time, philos->id);
 			return ;
+		}
+	}
+}
+
+void	philo_eat_count(t_philosopher *philo)
+{
+	if (philo->rule->max_eat_flag)
+	{
+		if (philo->eat_count > 0)
+			philo->eat_count--;
+		else if (philo->eat_count == 0)
+		{
+			philo->eat_count--;
+			pthread_mutex_lock(&philo->rule->m_eat_cnt);
+			philo->rule->eat_count--;
+			pthread_mutex_unlock(&philo->rule->m_eat_cnt);
 		}
 	}
 }
