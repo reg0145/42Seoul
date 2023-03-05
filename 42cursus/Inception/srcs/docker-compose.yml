@@ -55,14 +55,12 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_USER_PASSWORD: ${MYSQL_USER_PASSWORD}
-    ports :
-      - "3306:3306"
     expose:
       - "3306"
     networks:
       - lan
     volumes:
-      - /Users/colin/docker/data/DB:/var/lib/mysql
+      - ${HOME}/data/DB:/var/lib/mysql
     restart: always
 
 networks:
@@ -73,6 +71,6 @@ volumes:
   wordpress:
     driver: local
     driver_opts:
-      device: /Users/colin/docker/data/WordPress
+      device: ${HOME}/data/WordPress
       type: none
       o: bind
