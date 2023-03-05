@@ -38,4 +38,4 @@ fclean : clean
 	sudo rm -rf $(INSTALL_DOCKER_COMPOSE)
 	sudo sed -i s/$(DOMAIN)//g /etc/hosts
 
-.PHONY all run clean fclean
+.PHONY: all run clean fclean
