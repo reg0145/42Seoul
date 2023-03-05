@@ -23,10 +23,9 @@ RUN ln -sf /usr/local/bin/wp-cli.phar /usr/local/bin/wp
 # wordpress
 WORKDIR /var/www/html
 RUN mkdir -p /var/www/html
-#RUN wp core download --locale=ko_KR --path=/var/www/html
 
 # scripts
 ADD tool/entrypoint.sh /scripts/entrypoint.sh
 RUN chmod -R 755 /scripts
 
-ENTRYPOINT ["/scripts/entrypoint.sh" ]
+ENTRYPOINT [ "/scripts/entrypoint.sh" ]
