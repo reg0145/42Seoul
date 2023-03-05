@@ -32,8 +32,6 @@ services:
       WP_ADMIN: ${WP_ADMIN}
       WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD}
       WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
-    expose:
-      - "9000"
     networks:
       - lan
     volumes:
@@ -55,8 +53,6 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_USER_PASSWORD: ${MYSQL_USER_PASSWORD}
-    expose:
-      - "3306"
     networks:
       - lan
     volumes:
