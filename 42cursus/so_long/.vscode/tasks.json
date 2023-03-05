@@ -7,7 +7,7 @@
             "args": [
                 "-fdiagnostics-color=always",
 				"-L",
-				"./minilibx_opengl",
+				"./mlx",
 				"-lmlx",
 				"-framework",
 				"OpenGL",

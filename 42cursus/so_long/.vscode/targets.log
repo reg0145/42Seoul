@@ -6,8 +6,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Mon Jul 11 03:52:11 2022
+# Make data base, printed on Mon Jul 18 11:23:59 2022
 
 # Variables
 
@@ -24,7 +25,7 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/colin/Documents/Subject/Subject/42cursus/so_long
+CURDIR := /Users/colin/Documents/Subject/Subject/42cursus/so_long_last
 # makefile
 SHELL = /bin/sh
 # environment
@@ -40,7 +41,7 @@ __CFBundleIdentifier = com.microsoft.VSCode
 # environment
 INFOPATH = /opt/homebrew/share/info:
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/r_/2rxyw_3s2z76jq43jwg2f_j80000gn/T/vscode-ipc-ab75e298-582b-4921-9078-e11cbdd3e85d.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/r_/2rxyw_3s2z76jq43jwg2f_j80000gn/T/vscode-ipc-1daee59b-a3d0-4db0-82dc-f9559659a3b8.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -54,13 +55,15 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.Dp2zbTgFY0/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.kiYMmtRNBG/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
 VSCODE_PIPE_LOGGING = true
+# makefile (from `Makefile', line 30)
+OBJS = $(SRCS:.c=.o)
 # environment
-PWD = /Users/colin/Documents/Subject/Subject/42cursus/so_long
+PWD = /Users/colin/Documents/Subject/Subject/42cursus/so_long_last
 # environment
 HOMEBREW_CELLAR = /opt/homebrew/Cellar
 # environment
@@ -78,12 +81,10 @@ VSCODE_CODE_CACHE_PATH = /Users/colin/Library/Application Support/Code/CachedDat
 # environment
 LOGNAME = colin
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# makefile (from `Makefile', line 16)
-SOLONG_SRC = solong.c util.c
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 ZSH = /Users/colin/.oh-my-zsh
-# makefile (from `Makefile', line 14)
+# makefile (from `Makefile', line 28)
 CFLAG = -Wall -Wextra -Werror
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
@@ -95,9 +96,11 @@ XPC_FLAGS = 0x0
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
+# makefile (from `Makefile', line 13)
+SRCS = main.c util.c event.c check_map.c check_object.c draw.c ft_split.c ft_strjoin.c game.c image.c map.c object.c util.c
 # environment
 SHLVL = 1
-# makefile (from `Makefile', line 13)
+# makefile (from `Makefile', line 27)
 CC = cc
 # default
 MAKE_VERSION := 3.81
@@ -105,8 +108,8 @@ MAKE_VERSION := 3.81
 USER = colin
 # makefile
 .DEFAULT_GOAL := all
-# makefile (from `Makefile', line 20)
-NAME = solong
+# makefile (from `Makefile', line 31)
+NAME = so_long
 # environment
 LESS = -R
 # automatic
@@ -145,6 +148,8 @@ COMMAND_MODE = unix2003
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
+# makefile (from `Makefile', line 29)
+FRAMEWORK = -framework OpenGL -framework AppKit
 # environment
 PAGER = less
 # environment
@@ -160,11 +165,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 58194
-# makefile (from `Makefile', line 18)
-SOLONG_BONUS_SRC = client_bonus.c common_util_bonus.c
+VSCODE_PID = 2343
 # variable set hash-table stats:
-# Load=76/1024=7%, Rehash=0, Collisions=1/106=1%
+# Load=77/1024=8%, Rehash=0, Collisions=5/109=5%
 
 # Pattern-specific Variable Values
 
@@ -172,17 +175,23 @@ SOLONG_BONUS_SRC = client_bonus.c common_util_bonus.c
 
 # Directories
 
-# . (device 16777229, inode 17083622): 16 files, no impossibilities.
+# . (device 16777229, inode 35847861): 27 files, no impossibilities.
 
-# 16 files, no impossibilities in 1 directories.
+# 27 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
-# No implicit rules.
+%.o: %.c
+#  commands to execute (from `Makefile', line 40):
+	$(CC) $(CFLAG) -c -o $@ $<
+	
+
+ 
+# 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
 
-all: solong
+all: so_long
 #  Phony target (prerequisite of .PHONY).
 #  Command-line target.
 #  Implicit rule search has not been done.
@@ -192,19 +201,43 @@ all: solong
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/4=0%
 
-.PHONY: bonus clean fclean re all
+.PHONY: clean fclean re all
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-solong.c:
+main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-11 03:37:47
+#  Last modified 2022-07-18 03:26:28
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+object.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_strjoin.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ft_split.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+check_map.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .SUFFIXES:
@@ -215,35 +248,28 @@ solong.c:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-09 21:18:35
+#  Last modified 2022-07-18 03:34:58
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-util.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-11 03:26:54
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+map.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-bonus:
+fclean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 28):
-	@make SOLONG_SRC="$(SOLONG_BONUS_SRC)"
+#  commands to execute (from `Makefile', line 47):
+	rm -f $(OBJS)
+	rm -f $(NAME)
+	@make -C mlx fclean
 	
-
-fclean: clean
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
 
 # Not a target:
 .DEFAULT:
@@ -257,46 +283,94 @@ re: fclean all
 #  File does not exist.
 #  File has not been updated.
 
+# Not a target:
+image.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 clean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 31):
-	rm -f $(NAME)
+#  commands to execute (from `Makefile', line 43):
+	rm -f $(OBJS)
+	@make -C mlx clean
 	
 
-solong: solong.c util.c
+# Not a target:
+game.o:
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: `'
- 
+#  Modification time never checked.
+#  File has not been updated.
+
+main.o: main.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `main'
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # automatic
-# @ := solong
+# @ := main.o
 # automatic
 # % := 
 # automatic
-# * := 
+# * := main
 # automatic
-# + := solong.c util.c
+# + := main.c
 # automatic
 # | := 
 # automatic
-# < := solong.c
+# < := main.c
 # automatic
-# ^ := solong.c util.c
+# ^ := main.c
 # automatic
-# ? := solong.c util.c
+# ? := main.c
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=3/14=21%
-#  commands to execute (from `Makefile', line 25):
-	$(CC) $(CFLAG) -o $@ $^
+#  commands to execute (from `Makefile', line 40):
+	$(CC) $(CFLAG) -c -o $@ $<
 	
 
+# Not a target:
+event.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+draw.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+so_long: main.o util.o event.o check_map.o check_object.o draw.o ft_split.o ft_strjoin.o game.o image.o map.o object.o util.o
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+#  commands to execute (from `Makefile', line 36):
+	@make -C mlx
+	$(CC) $(CFLAG) $(FRAMEWORK) -L./mlx -lmlx -o $@ $^
+	
+
+# Not a target:
+util.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+check_object.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 # files hash-table stats:
-# Load=12/1024=1%, Rehash=0, Collisions=0/37=0%
+# Load=22/1024=2%, Rehash=0, Collisions=0/58=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -308,6 +382,6 @@ solong: solong.c util.c
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jul 11 03:52:11 2022
+# Finished Make data base on Mon Jul 18 11:23:59 2022
 
  

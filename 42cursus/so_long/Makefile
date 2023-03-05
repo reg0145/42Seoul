@@ -6,32 +6,48 @@
 #    By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 17:44:07 by donghyuk          #+#    #+#              #
-#    Updated: 2022/07/09 21:18:35 by donghyuk         ###   ########.fr        #
+#    Updated: 2022/07/18 03:34:58 by donghyuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+SRCS =				main.c \
+					util.c \
+					event.c \
+					check_map.c \
+					check_object.c \
+					draw.c \
+					ft_split.c \
+					ft_strjoin.c \
+					game.c \
+					image.c \
+					map.c \
+					object.c \
+					util.c
+
 CC = cc
 CFLAG = -Wall -Wextra -Werror
-
-SOLONG_SRC = solong.c util.c
-
-SOLONG_BONUS_SRC = client_bonus.c common_util_bonus.c
-
-NAME = solong
+FRAMEWORK = -framework OpenGL -framework AppKit
+OBJS = $(SRCS:.c=.o)
+NAME = so_long
 
 all : $(NAME)
 
-solong : $(SOLONG_SRC)
-	$(CC) $(CFLAG) -o $@ $^
+$(NAME) : $(OBJS)
+	@make -C mlx
+	$(CC) $(CFLAG) $(FRAMEWORK) -L./mlx -lmlx -o $@ $^
 
-bonus :
-	@make SOLONG_SRC="$(SOLONG_BONUS_SRC)"
+%.o : %.c
+	$(CC) $(CFLAG) -c -o $@ $<
 
 clean :
-	rm -f $(NAME)
+	rm -f $(OBJS)
+	@make -C mlx clean
 
-fclean : clean
+fclean :
+	rm -f $(OBJS)
+	rm -f $(NAME)
+	@make -C mlx fclean
 
 re : fclean all
 
-.PHONY: bonus clean fclean re all
+.PHONY: clean fclean re all

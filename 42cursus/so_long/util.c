@@ -1,6 +1,24 @@
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   util.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: donghyuk <donghyuk@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/18 02:56:14 by donghyuk          #+#    #+#             */
+/*   Updated: 2022/07/18 11:27:31 by donghyuk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	ft_len(char *str)
+#include "util.h"
+
+void	ft_error(char *message)
+{
+	printf("%s\n", message);
+	exit(EXIT_FAILURE);
+}
+
+int	ft_strlen(const char *str)
 {
 	int	len;
 
@@ -36,7 +54,7 @@ void	*ft_memcpy(void *dest, const void *src, int count)
 	unsigned char	*d_tmp;
 	unsigned char	*s_tmp;
 
-	if (dest == NULL && src == NULL)
+	if (dest == NULL || src == NULL)
 		return (NULL);
 	d_tmp = (unsigned char *)dest;
 	s_tmp = (unsigned char *)src;
@@ -48,8 +66,8 @@ void	*ft_memcpy(void *dest, const void *src, int count)
 void	*ft_calloc(int num, int size)
 {
 	char	*temp;
-	int	i;
-	int	total;
+	int		i;
+	int		total;
 
 	total = num * size;
 	temp = (char *)malloc(sizeof(char) * total);
