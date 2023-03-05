@@ -14,6 +14,4 @@ RUN sed -i 's/#bind-address=0.0.0.0/bind-address=0.0.0.0/g' /etc/my.cnf.d/mariad
 COPY conf/entrypoint.sh /scripts/entrypoint.sh
 RUN chmod -R 755 /scripts
 
-EXPOSE 3306
-
 ENTRYPOINT ["/scripts/entrypoint.sh"]
