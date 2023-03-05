@@ -25,7 +25,7 @@ WORKDIR /var/www/html
 RUN mkdir -p /var/www/html
 
 # scripts
-ADD tool/entrypoint.sh /scripts/entrypoint.sh
+ADD tools/entrypoint.sh /scripts/entrypoint.sh
 RUN chmod -R 755 /scripts
 
 ENTRYPOINT ["/scripts/entrypoint.sh"]
