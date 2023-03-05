@@ -28,4 +28,4 @@ RUN mkdir -p /var/www/html
 ADD tool/entrypoint.sh /scripts/entrypoint.sh
 RUN chmod -R 755 /scripts
 
-ENTRYPOINT [ "/scripts/entrypoint.sh" ]
+ENTRYPOINT ["/scripts/entrypoint.sh"]
