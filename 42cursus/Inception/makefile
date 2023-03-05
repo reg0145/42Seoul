@@ -37,3 +37,5 @@ fclean : clean
 	sudo apt remove -y docker.io
 	sudo rm -rf $(INSTALL_DOCKER_COMPOSE)
 	sudo sed -i s/$(DOMAIN)//g /etc/hosts
+
+.PHONY all run clean fclean
