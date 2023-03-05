@@ -6,7 +6,6 @@ DOCKER_DATA_DIR			= $(HOME)/data
 INSTALL_DOCKER			= /usr/bin/docker
 INSTALL_DOCKER_COMPOSE	= $(DOCKER_COMPOSE_DIR)/docker-compose
 
-
 all : run
 
 run : $(INSTALL_DOCKER) $(INSTALL_DOCKER_COMPOSE) $(DOCKER_DATA_DIR) $(SET_HOSTS)
