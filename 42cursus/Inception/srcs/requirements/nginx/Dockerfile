@@ -11,17 +11,14 @@ COPY conf/default.conf /etc/nginx/http.d
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 # nginx:ssl
-ENV SSL_PRIVATE_KEY="/var/www/ssl/nginx-ssl.key"
-ENV SSL_PUBLIC_KEY="/var/www/ssl/nginx-ssl.crt"
-ENV SSL_CSR="/var/www/ssl/nginx-ssl.csr"
-ENV SSL_REQ_CONF="/tmp/ssl_req_info.conf"
-
-COPY conf/ssl_req_info.conf /tmp
-
-RUN mkdir -p /var/www/ssl
-RUN openssl genrsa 2048 > ${SSL_PRIVATE_KEY}
-RUN openssl req -new -key ${SSL_PRIVATE_KEY} -out ${SSL_CSR} -config ${SSL_REQ_CONF}
-RUN openssl req -x509 -days 365 -key ${SSL_PRIVATE_KEY} -in ${SSL_CSR} -out ${SSL_PUBLIC_KEY} -days 365 -config ${SSL_REQ_CONF}
+RUN openssl req \
+        -x509 \
+        -days 365 \
+        -nodes \
+        -newkey rsa:2048 \
+        -keyout /etc/ssl/private/nginx.key \
+        -out /etc/ssl/certs/nginx.crt \
+        -subj "/C=KR/ST=Seoul/L=Gaepo/O=42Seoul/OU=Dev/emailAddress=donghyuk@student.seoul42.kr/CN=www.donghyuk.42.fr"
 
 # port
 EXPOSE 443
