@@ -4,15 +4,11 @@ services:
     container_name: nginx
     build: ./requirements/nginx
     ports:
-      - '443:443'
+      - 443:443
     networks:
       - lan
     volumes:
-      - type: volume
-        source: wordpress
-        target: /var/www/html
-        volume:
-          nocopy: true
+      - wordpress:/var/www/html
     depends_on:
       - wordpress
     restart: always
@@ -21,25 +17,12 @@ services:
     image: wordpress:6.1.1
     container_name: wordpress
     build: ./requirements/wordpress
-    environment:
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER_PASSWORD: ${MYSQL_USER_PASSWORD}
-      WP_USER: ${WP_USER}
-      WP_USER_PASSWORD: ${WP_USER_PASSWORD}
-      WP_USER_EMAIL: ${WP_USER_EMAIL}
-      WP_USER_ROLE: ${WP_USER_ROLE}
-      WP_ADMIN: ${WP_ADMIN}
-      WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD}
-      WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
+    env_file:
+      - .env
     networks:
       - lan
     volumes:
-      - type: volume
-        source: wordpress
-        target: /var/www/html
-        volume:
-          nocopy: false
+      - wordpress:/var/www/html
     depends_on:
       - mariadb
     restart: always
@@ -48,25 +31,28 @@ services:
     image: mariadb:10.6.12
     container_name: mariadb
     build: ./requirements/mariadb
-    environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_USER_PASSWORD: ${MYSQL_USER_PASSWORD}
+    env_file:
+      - .env
     networks:
       - lan
     volumes:
-      - ${HOME}/data/DB:/var/lib/mysql
+      - mariadb:/var/lib/mysql
     restart: always
-
-networks:
-  lan:
-    driver: bridge
 
 volumes:
   wordpress:
     driver: local
     driver_opts:
-      device: ${HOME}/data/WordPress
+      device: /Users/colin/data/WordPress
       type: none
       o: bind
+  mariadb:
+    driver: local
+    driver_opts:
+      device: /Users/colin/data/DB
+      type: none
+      o: bind
+
+networks:
+  lan:
+    driver: bridge
