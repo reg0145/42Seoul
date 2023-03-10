@@ -43,13 +43,13 @@ volumes:
   wordpress:
     driver: local
     driver_opts:
-      device: /Users/colin/data/WordPress
+      device: ${HOME}/data/WordPress
       type: none
       o: bind
   mariadb:
     driver: local
     driver_opts:
-      device: /Users/colin/data/DB
+      device: ${HOME}/data/DB
       type: none
       o: bind
 
