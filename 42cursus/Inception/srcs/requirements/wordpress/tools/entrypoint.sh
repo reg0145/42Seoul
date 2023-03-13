@@ -17,7 +17,7 @@ if [ "$wp_admin" = "" ] || [ "$wp_admin" = 'admin' ]; then
 fi
 
 if [ "$wp_user" = "" ]; then
-	wp user create ${WP_USER} ${WP_USER_EMAIL} --user_pass=${WP_USER_PW} --role=${WP_USER_ROLE}
+	wp user create ${WP_USER} ${WP_USER_EMAIL} --user_pass=${WP_USER_PASSWORD} --role=${WP_USER_ROLE}
 fi
 
 # Run php-fpm
