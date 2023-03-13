@@ -18,8 +18,7 @@ $(DOMAIN) :
 	@if [ ! "$$(sudo grep $(DOMAIN) /etc/hosts)" ]; then sudo sh -c 'echo $(DOMAIN) >> /etc/hosts'; fi
 
 clean :
-	docker-compose -f $(DOCKER_COMPOSE_YML) down
-	@if [ "$$(docker volume ls -q)" ]; then docker volume rm `docker volume ls -q`; fi
+	docker-compose -f $(DOCKER_COMPOSE_YML) down --volumes
 	docker system prune -a
 	sudo rm -rf $(DOCKER_DATA_DIR)
 
