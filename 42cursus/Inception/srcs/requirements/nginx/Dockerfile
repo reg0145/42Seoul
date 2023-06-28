@@ -4,7 +4,7 @@ FROM alpine:3.17.2
 ENV NGINX_VER="1.22.1-r0"
 
 RUN apk update
-RUN apk add nginx=${NGINX_VER} openssl
+RUN apk add nginx openssl
 
 # nginx
 COPY conf/default.conf /etc/nginx/http.d
