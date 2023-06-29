@@ -1,15 +1,18 @@
 #!/bin/sh
 
+# mysql 소켓 폴더의 권한 부여
 if [ ! -d "/run/mysqld" ]; then
 	mkdir -p /run/mysqld
 	chown -R mysql:mysql /run/mysqld
 fi
 
+# mysql 접근 유저 및 디렉토리 설정 
 if [ ! -d "/var/lib/mysql/mysql" ]; then
 	mysql_install_db --user=mysql --ldata=/var/lib/mysql > /dev/null
 
-	tfile=`mktemp`
-	cat << EOF > $tfile
+# mysql 데이터베이스 생성 및 원격 접속 권한 부여
+tfile=`mktemp`
+cat << EOF > $tfile
 USE mysql;
 FLUSH PRIVILEGES ;
 CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE\` CHARACTER SET utf8 COLLATE utf8_general_ci;
