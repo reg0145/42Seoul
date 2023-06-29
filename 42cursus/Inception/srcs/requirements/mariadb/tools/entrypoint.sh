@@ -10,9 +10,9 @@ fi
 if [ ! -d "/var/lib/mysql/mysql" ]; then
 	mysql_install_db --user=mysql --ldata=/var/lib/mysql > /dev/null
 
-# mysql 데이터베이스 생성 및 원격 접속 권한 부여
-tfile=`mktemp`
-cat << EOF > $tfile
+	# mysql 데이터베이스 생성 및 원격 접속 권한 부여
+	tfile=`mktemp`
+	cat << EOF > $tfile
 USE mysql;
 FLUSH PRIVILEGES ;
 CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE\` CHARACTER SET utf8 COLLATE utf8_general_ci;
